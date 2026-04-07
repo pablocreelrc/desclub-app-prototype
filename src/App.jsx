@@ -7,6 +7,7 @@ import MapScreen from './screens/MapScreen'
 import CardScreen from './screens/CardScreen'
 import ProfileScreen from './screens/ProfileScreen'
 import TabBar from './components/TabBar'
+import V2App from './screens/v2/V2App'
 
 const DEALS = [
   { id: 1, brand: 'Cinépolis', discount: '2x1', detail: 'Martes y Jueves', dist: '1.2 km', rating: 4.8, cat: '🎬 Cine', catKey: 'cine', lat: 19.4326, lng: -99.1332, image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&h=200&fit=crop', description: 'Compra 1 boleto y lleva el 2do GRATIS todos los martes y jueves. Aplica para todas las salas incluyendo IMAX, 4DX y Macro XE.', expiry: '15 días', redeemed: 342, terms: ['Válido martes y jueves', 'No acumulable con otras promociones', 'Presentar membresía DescluB vigente', 'Sujeto a disponibilidad'] },
@@ -18,6 +19,21 @@ const DEALS = [
   { id: 7, brand: 'Tim Hortons', discount: '2x1', detail: 'Cafés y donuts', dist: '0.6 km', rating: 4.4, cat: '🍔 Comida', catKey: 'comida', lat: 19.4295, lng: -99.1310, image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=200&fit=crop', description: '2x1 en todos los cafés y donuts de lunes a miércoles. Aplica en sucursales participantes.', expiry: '12 días', redeemed: 445, terms: ['Válido lunes a miércoles', 'Una promoción por visita', 'Sucursales participantes', 'No aplica en delivery'] },
   { id: 8, brand: 'Devlyn', discount: '30% OFF', detail: 'Lentes y armazones', dist: '1.5 km', rating: 4.2, cat: '🛍 Retail', catKey: 'retail', lat: 19.4340, lng: -99.1360, image: 'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400&h=200&fit=crop', description: '30% de descuento en armazones y lentes graduados. Incluye marcas premium como Ray-Ban y Oakley.', expiry: '25 días', redeemed: 198, terms: ['Armazones seleccionados', 'Incluye antirreflejante básico', 'Presentar membresía vigente', 'No acumulable'] },
 ]
+
+function PhoneFrame({ children, label, variant = 'light' }) {
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <div className="relative" style={{ width: 390, height: 844 }}>
+        <div className={`w-full h-full rounded-[40px] overflow-hidden shadow-2xl relative flex flex-col ${
+          variant === 'dark' ? 'bg-[#111118]' : 'bg-white'
+        }`}>
+          {children}
+        </div>
+      </div>
+      <span className="text-sm font-bold text-gray-500 tracking-wide uppercase">{label}</span>
+    </div>
+  )
+}
 
 export default function App() {
   const [screen, setScreen] = useState('login')
@@ -39,48 +55,51 @@ export default function App() {
     setScreen('app')
   }
 
+  // Login screen — single phone
   if (screen === 'login') {
     return (
       <div className="flex items-center justify-center min-h-screen p-4">
-        <div className="relative" style={{ width: 390, height: 844 }}>
-          <div className="w-full h-full bg-white rounded-[40px] overflow-hidden shadow-2xl">
-            <LoginScreen onLogin={() => { setScreen('app'); setTab('home'); }} />
-          </div>
-        </div>
+        <PhoneFrame label="DescluB Login">
+          <LoginScreen onLogin={() => { setScreen('app'); setTab('home'); }} />
+        </PhoneFrame>
       </div>
     )
   }
 
+  // Deal detail — single phone
   if (screen === 'detail') {
     return (
       <div className="flex items-center justify-center min-h-screen p-4">
-        <div className="relative" style={{ width: 390, height: 844 }}>
-          <div className="w-full h-full bg-white rounded-[40px] overflow-hidden shadow-2xl">
-            <DealDetailScreen
-              deal={selectedDeal}
-              saved={savedDeals.includes(selectedDeal?.id)}
-              onToggleSave={() => toggleSave(selectedDeal?.id)}
-              onBack={() => setScreen('app')}
-            />
-          </div>
-        </div>
+        <PhoneFrame label="Deal Detail">
+          <DealDetailScreen
+            deal={selectedDeal}
+            saved={savedDeals.includes(selectedDeal?.id)}
+            onToggleSave={() => toggleSave(selectedDeal?.id)}
+            onBack={() => setScreen('app')}
+          />
+        </PhoneFrame>
       </div>
     )
   }
 
+  // Main app — two phones side by side
   return (
-    <div className="flex items-center justify-center min-h-screen p-4">
-      <div className="relative" style={{ width: 390, height: 844 }}>
-        <div className="w-full h-full bg-white rounded-[40px] overflow-hidden shadow-2xl relative flex flex-col">
-          <div className="flex-1 overflow-hidden">
-            {tab === 'home' && <HomeScreen deals={DEALS} onDealClick={(d) => navigate('detail', d)} />}
-            {tab === 'map' && <MapScreen deals={DEALS} onDealClick={(d) => navigate('detail', d)} />}
-            {tab === 'card' && <CardScreen />}
-            {tab === 'profile' && <ProfileScreen onLogout={() => setScreen('login')} />}
-          </div>
-          <TabBar active={tab} onChange={handleTab} />
+    <div className="flex items-center justify-center min-h-screen p-6 gap-10">
+      {/* Version A: Light / Consumer */}
+      <PhoneFrame label="Version A — Consumer App" variant="light">
+        <div className="flex-1 overflow-hidden">
+          {tab === 'home' && <HomeScreen deals={DEALS} onDealClick={(d) => navigate('detail', d)} />}
+          {tab === 'map' && <MapScreen deals={DEALS} onDealClick={(d) => navigate('detail', d)} />}
+          {tab === 'card' && <CardScreen />}
+          {tab === 'profile' && <ProfileScreen onLogout={() => setScreen('login')} />}
         </div>
-      </div>
+        <TabBar active={tab} onChange={handleTab} />
+      </PhoneFrame>
+
+      {/* Version B: Dark / PGA Tour Style */}
+      <PhoneFrame label="Version B — Premium Pass" variant="dark">
+        <V2App />
+      </PhoneFrame>
     </div>
   )
 }
