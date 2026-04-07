@@ -61,7 +61,7 @@ export default function CardScreen() {
                   </div>
                   <p className="text-gray-400 text-[10px] mt-3 leading-relaxed">
                     Esta tarjeta es propiedad de Loyalty Solutions SA de CV.
-                    Para soporte: soporte@desclub.com.mx | Tel: 800-DESCLUB
+                    Para soporte: WhatsApp 💬
                   </p>
                 </div>
                 <div className="absolute bottom-4 right-6">

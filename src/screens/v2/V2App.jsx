@@ -232,15 +232,12 @@ function SupportTab() {
         ))}
       </div>
 
-      <div className="mt-8 space-y-3">
-        <button className="w-full h-12 bg-[#1c1c28] border border-[#2a2a3a] rounded-2xl text-white text-sm font-semibold flex items-center justify-center gap-2 active:bg-[#252535]">
-          💬 Chat de Soporte
-        </button>
-        <button className="w-full h-12 bg-[#1c1c28] border border-[#2a2a3a] rounded-2xl text-white text-sm font-semibold flex items-center justify-center gap-2 active:bg-[#252535]">
-          📞 Llamar: 800-DESCLUB
-        </button>
-        <button className="w-full h-12 bg-[#1c1c28] border border-[#2a2a3a] rounded-2xl text-white text-sm font-semibold flex items-center justify-center gap-2 active:bg-[#252535]">
-          📧 soporte@desclub.com.mx
+      <div className="mt-8">
+        <button
+          onClick={() => window.open('https://wa.me/525500000000', '_blank')}
+          className="w-full h-14 bg-[#25D366] rounded-2xl text-white text-sm font-bold flex items-center justify-center gap-3 active:scale-[0.97] transition-transform shadow-lg shadow-[#25D366]/20"
+        >
+          💬 Chat de Soporte vía WhatsApp
         </button>
       </div>
     </div>
