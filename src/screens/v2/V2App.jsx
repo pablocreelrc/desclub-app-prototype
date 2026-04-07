@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import V2Login from './V2Login'
 
 const TABS = ['Overview', 'Benefits', 'My Account', 'Support']
 
@@ -247,7 +248,12 @@ function SupportTab() {
 }
 
 export default function V2App() {
+  const [loggedIn, setLoggedIn] = useState(false)
   const [activeTab, setActiveTab] = useState('Overview')
+
+  if (!loggedIn) {
+    return <V2Login onLogin={() => setLoggedIn(true)} />
+  }
 
   return (
     <div className="h-full flex flex-col bg-[#111118] text-white">
