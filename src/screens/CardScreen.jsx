@@ -13,32 +13,25 @@ export default function CardScreen() {
       </div>
 
       <div className="flex-1 overflow-y-auto px-5 pt-6 pb-4">
-        {/* Card */}
-        <div className="perspective-1000 mb-6">
-          <button
-            onClick={() => setFlipped(!flipped)}
-            className="w-full active:scale-[0.98] transition-transform"
-          >
-            {!flipped ? (
-              /* Front */
-              <div className="w-full h-56 bg-gradient-to-br from-primary-600 via-primary-500 to-primary-700 rounded-3xl p-6 relative overflow-hidden shadow-xl shadow-primary-500/30">
-                {/* Pattern overlay */}
+        {/* Card with flip animation */}
+        <div className="card-flip-container mb-6">
+          <button onClick={() => setFlipped(!flipped)} className="w-full">
+            <div className={`card-flip-inner ${flipped ? 'flipped' : ''}`} style={{ height: 224 }}>
+              {/* Front */}
+              <div className="card-flip-front w-full h-56 bg-gradient-to-br from-primary-600 via-primary-500 to-primary-700 rounded-3xl p-6 relative overflow-hidden shadow-xl shadow-primary-500/30">
                 <div className="absolute inset-0 opacity-10">
                   <div className="absolute top-[-20px] right-[-20px] w-40 h-40 rounded-full border-[20px] border-white" />
                   <div className="absolute bottom-[-30px] left-[-30px] w-48 h-48 rounded-full border-[20px] border-white" />
                 </div>
-
                 <div className="relative z-10 h-full flex flex-col justify-between">
                   <div className="flex items-center justify-between">
                     <span className="text-white text-2xl font-bold tracking-tight">DescluB</span>
                     <span className="text-white/60 text-xs font-medium bg-white/10 px-3 py-1 rounded-full">PREMIUM</span>
                   </div>
-
                   <div>
                     <p className="text-white/60 text-xs mb-1">Número de membresía</p>
                     <p className="text-white text-xl font-mono tracking-[3px]">5114 1102 5020 1775</p>
                   </div>
-
                   <div className="flex items-end justify-between">
                     <div>
                       <p className="text-white/60 text-[10px] mb-0.5">MIEMBRO</p>
@@ -51,9 +44,8 @@ export default function CardScreen() {
                   </div>
                 </div>
               </div>
-            ) : (
-              /* Back */
-              <div className="w-full h-56 bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl relative overflow-hidden shadow-xl">
+              {/* Back */}
+              <div className="card-flip-back w-full h-56 bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl relative overflow-hidden shadow-xl">
                 <div className="w-full h-12 bg-gray-700 mt-8" />
                 <div className="px-6 mt-4">
                   <div className="bg-white rounded-lg h-10 flex items-center justify-end px-4">
@@ -68,7 +60,7 @@ export default function CardScreen() {
                   <span className="text-gray-600 text-lg font-bold">DescluB</span>
                 </div>
               </div>
-            )}
+            </div>
           </button>
           <p className="text-center text-xs text-gray-400 mt-3">Toca para {flipped ? 'ver frente' : 'ver reverso'}</p>
         </div>

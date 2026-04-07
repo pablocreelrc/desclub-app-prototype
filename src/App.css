@@ -6,3 +6,27 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Card flip animation */
+.card-flip-container {
+  perspective: 1000px;
+}
+.card-flip-inner {
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.card-flip-inner.flipped {
+  transform: rotateY(180deg);
+}
+.card-flip-front,
+.card-flip-back {
+  backface-visibility: hidden;
+}
+.card-flip-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: rotateY(180deg);
+}

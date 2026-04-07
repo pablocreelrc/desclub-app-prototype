@@ -24,7 +24,10 @@ export default function DealDetailScreen({ deal, saved, onToggleSave, onBack }) 
         >
           {saved ? '❤️' : '🤍'}
         </button>
-        <button className="absolute top-12 right-5 w-10 h-10 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center text-white text-lg active:scale-90 transition-transform">
+        <button
+          onClick={() => { if (navigator.share) navigator.share({ title: deal.brand + ' — ' + deal.discount, text: deal.description, url: 'https://desclub.com.mx' }) }}
+          className="absolute top-12 right-5 w-10 h-10 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center text-white text-lg active:scale-90 transition-transform"
+        >
           ↗
         </button>
 
@@ -130,7 +133,10 @@ export default function DealDetailScreen({ deal, saved, onToggleSave, onBack }) 
       {/* CTA bar */}
       <div className="absolute bottom-0 left-0 right-0 bg-white/90 backdrop-blur-lg border-t border-gray-100 px-5 pt-3 pb-8 flex gap-3">
         {deal.dist && (
-          <button className="w-16 h-[52px] bg-gray-100 rounded-2xl flex flex-col items-center justify-center text-sm active:bg-gray-200 transition-colors">
+          <button
+            onClick={() => window.open(`https://www.google.com/maps/search/${encodeURIComponent(deal.brand)}/@${deal.lat || 19.43},${deal.lng || -99.13},15z`, '_blank')}
+            className="w-16 h-[52px] bg-gray-100 rounded-2xl flex flex-col items-center justify-center text-sm active:bg-gray-200 transition-colors"
+          >
             <span className="text-lg">📍</span>
             <span className="text-[10px] text-gray-600 font-medium">Ir</span>
           </button>
