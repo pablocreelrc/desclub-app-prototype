@@ -5,11 +5,11 @@ const TABS = ['Overview', 'Benefits', 'My Account', 'Support']
 
 const DEALS = [
   { id: 1, brand: 'Cinépolis', discount: '2x1', detail: 'Boletos Martes y Jueves', image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&h=300&fit=crop', cat: 'Entretenimiento' },
-  { id: 2, brand: 'Hertz', discount: '25% OFF', detail: 'Renta de auto fin de semana', image: 'https://images.unsplash.com/photo-1449965408869-ebd13bc7e0a6?w=600&h=300&fit=crop', cat: 'Transporte' },
+  { id: 2, brand: 'Hertz', discount: '25% OFF', detail: 'Renta de auto fin de semana', image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&h=300&fit=crop', cat: 'Transporte' },
   { id: 3, brand: 'Starbucks', discount: '15% OFF', detail: 'Todas las bebidas', image: 'https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=600&h=300&fit=crop', cat: 'Alimentos' },
   { id: 4, brand: 'Sport City', discount: '3 días GRATIS', detail: 'Pase de cortesía completo', image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=300&fit=crop', cat: 'Wellness' },
   { id: 5, brand: 'Liverpool', discount: '20% OFF', detail: 'Ropa y accesorios seleccionados', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=300&fit=crop', cat: 'Retail' },
-  { id: 6, brand: 'Volaris', discount: '10% OFF', detail: 'Vuelos nacionales exclusivos', image: 'https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=600&h=300&fit=crop', cat: 'Viajes' },
+  { id: 6, brand: 'Volaris', discount: '10% OFF', detail: 'Vuelos nacionales exclusivos', image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&h=300&fit=crop', cat: 'Viajes' },
   { id: 7, brand: 'Tim Hortons', discount: '2x1', detail: 'Cafés y donuts L-M', image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=300&fit=crop', cat: 'Alimentos' },
   { id: 8, brand: 'Devlyn', discount: '30% OFF', detail: 'Lentes y armazones premium', image: 'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=600&h=300&fit=crop', cat: 'Retail' },
 ]
@@ -65,7 +65,7 @@ function BenefitsTab() {
     { title: 'Sorteos Exclusivos', desc: 'Sorteos exclusivos para miembros DescluB', image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&h=250&fit=crop' },
     { title: 'Ofertas de Marcas', desc: 'Descuentos de tus marcas favoritas', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=250&fit=crop' },
     { title: 'Experiencias VIP', desc: 'Accesos y experiencias premium', image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=250&fit=crop' },
-    { title: 'Viajes y Hospedaje', desc: 'Descuentos en hoteles, vuelos y más', image: 'https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=600&h=250&fit=crop' },
+    { title: 'Viajes y Hospedaje', desc: 'Descuentos en hoteles, vuelos y más', image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&h=250&fit=crop' },
   ]
 
   return (
