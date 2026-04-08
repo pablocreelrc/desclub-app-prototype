@@ -245,12 +245,12 @@ function DealsTab({ onDealClick }) {
   const filtered = activeCat ? DEALS.filter(d => d.cat === activeCat) : DEALS
 
   return (
-    <div className="px-5 pb-6 pt-2">
+    <div className="px-5 pb-6 pt-2 overflow-x-hidden">
       <h2 className="text-white text-2xl font-bold mb-1">Todas las ofertas</h2>
       <p className="text-[#888] text-sm mb-4">{filtered.length} descuentos disponibles</p>
 
       {/* Category pills */}
-      <div className="flex gap-2 overflow-x-auto no-scrollbar mb-5 -mx-5 px-5">
+      <div className="flex gap-2 overflow-x-auto no-scrollbar mb-5">
         {cats.map((cat) => (
           <button
             key={String(cat)}
@@ -528,7 +528,7 @@ export default function V3App() {
   }
 
   return (
-    <div className="h-full flex flex-col bg-black text-white relative">
+    <div className="h-full flex flex-col bg-black text-white relative overflow-hidden">
       <StatusBar variant="dark" />
       {/* Header */}
       <div className="pt-14 pb-2 px-5 flex items-center justify-between bg-black">
@@ -543,7 +543,7 @@ export default function V3App() {
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto overflow-x-hidden">
         {activeTab === 'explore' && <ExploreTab onDealClick={setSelectedDeal} />}
         {activeTab === 'deals' && <DealsTab onDealClick={setSelectedDeal} />}
         {activeTab === 'rewards' && <RewardsTab onDealClick={setSelectedDeal} />}

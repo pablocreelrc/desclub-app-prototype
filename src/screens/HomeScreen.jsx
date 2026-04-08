@@ -23,7 +23,7 @@ export default function HomeScreen({ deals, onDealClick }) {
   return (
     <div className="h-full flex flex-col bg-white">
       {/* Header */}
-      <div className="bg-gradient-to-br from-primary-500 to-primary-700 pt-14 pb-5 px-5">
+      <div className="bg-gradient-to-br from-primary-500 to-primary-700 pt-[60px] pb-5 px-5">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-white text-xl font-bold">Hola Pablo 👋</h1>
