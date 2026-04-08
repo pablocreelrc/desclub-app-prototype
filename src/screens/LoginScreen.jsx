@@ -2,17 +2,28 @@ export default function LoginScreen({ onLogin }) {
   return (
     <div className="h-full flex flex-col">
       {/* Hero */}
-      <div className="bg-primary-500 px-10 pt-16 pb-8 flex flex-col items-center text-center">
-        <div className="bg-white/20 rounded-xl px-8 py-3 mb-4">
-          <span className="text-white text-3xl font-bold tracking-tight">DescluB</span>
-        </div>
-        <p className="text-white text-lg font-medium leading-relaxed">
-          Miles de descuentos.<br />Una sola membresía.
-        </p>
-        <div className="flex gap-5 mt-6">
-          {['6,000+ establecimientos', '500+ marcas', '24/7 soporte'].map((s) => (
-            <span key={s} className="text-white/80 text-[11px] font-medium">{s}</span>
-          ))}
+      <div className="bg-gradient-to-br from-primary-600 via-primary-500 to-primary-700 px-10 pt-14 pb-8 flex flex-col items-center text-center relative overflow-hidden">
+        <div className="absolute top-[-30px] right-[-30px] w-44 h-44 rounded-full border-[18px] border-white/5" />
+        <div className="absolute bottom-[-20px] left-[-20px] w-36 h-36 rounded-full border-[14px] border-white/5" />
+        <div className="relative z-10 flex flex-col items-center">
+          <div className="bg-white/20 backdrop-blur-sm rounded-2xl px-8 py-3 mb-4">
+            <span className="text-white text-3xl font-bold tracking-tight">DescluB</span>
+          </div>
+          <p className="text-white text-lg font-medium leading-relaxed">
+            Miles de descuentos.<br />Una sola membresía.
+          </p>
+          <div className="flex gap-4 mt-5">
+            {[
+              { n: '6,000+', l: 'comercios' },
+              { n: '500+', l: 'marcas' },
+              { n: '24/7', l: 'soporte' },
+            ].map((s) => (
+              <div key={s.l} className="text-center">
+                <p className="text-white text-base font-bold">{s.n}</p>
+                <p className="text-white/60 text-[10px]">{s.l}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

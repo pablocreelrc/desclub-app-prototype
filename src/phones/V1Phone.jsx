@@ -6,6 +6,7 @@ import MapScreen from '../screens/MapScreen'
 import CardScreen from '../screens/CardScreen'
 import ProfileScreen from '../screens/ProfileScreen'
 import TabBar from '../components/TabBar'
+import StatusBar from '../components/StatusBar'
 
 const DEALS = [
   { id: 1, brand: 'Cinépolis', discount: '2x1', detail: 'Martes y Jueves', dist: '1.2 km', rating: 4.8, cat: '🎬 Cine', catKey: 'cine', lat: 19.4326, lng: -99.1332, image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&h=200&fit=crop', description: 'Compra 1 boleto y lleva el 2do GRATIS todos los martes y jueves. Aplica para todas las salas incluyendo IMAX, 4DX y Macro XE.', expiry: '15 días', redeemed: 342, terms: ['Válido martes y jueves', 'No acumulable con otras promociones', 'Presentar membresía DescluB vigente', 'Sujeto a disponibilidad'] },
@@ -29,22 +30,31 @@ export default function V1Phone() {
   }
 
   if (screen === 'login') {
-    return <LoginScreen onLogin={() => { setScreen('app'); setTab('home'); }} />
+    return (
+      <div className="h-full flex flex-col bg-white relative">
+        <StatusBar variant="light" />
+        <LoginScreen onLogin={() => { setScreen('app'); setTab('home'); }} />
+      </div>
+    )
   }
 
   if (screen === 'detail') {
     return (
-      <DealDetailScreen
-        deal={selectedDeal}
-        saved={savedDeals.includes(selectedDeal?.id)}
-        onToggleSave={() => toggleSave(selectedDeal?.id)}
-        onBack={() => setScreen('app')}
-      />
+      <div className="h-full flex flex-col bg-white relative">
+        <StatusBar variant="light" />
+        <DealDetailScreen
+          deal={selectedDeal}
+          saved={savedDeals.includes(selectedDeal?.id)}
+          onToggleSave={() => toggleSave(selectedDeal?.id)}
+          onBack={() => setScreen('app')}
+        />
+      </div>
     )
   }
 
   return (
-    <>
+    <div className="h-full flex flex-col bg-white relative">
+      <StatusBar variant="light" />
       <div className="flex-1 overflow-hidden">
         {tab === 'home' && <HomeScreen deals={DEALS} onDealClick={(d) => { setSelectedDeal(d); setScreen('detail'); }} />}
         {tab === 'map' && <MapScreen deals={DEALS} onDealClick={(d) => { setSelectedDeal(d); setScreen('detail'); }} />}
@@ -52,6 +62,6 @@ export default function V1Phone() {
         {tab === 'profile' && <ProfileScreen onLogout={() => setScreen('login')} />}
       </div>
       <TabBar active={tab} onChange={(t) => { setTab(t); setScreen('app'); }} />
-    </>
+    </div>
   )
 }

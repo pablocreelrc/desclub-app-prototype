@@ -71,6 +71,36 @@ export default function HomeScreen({ deals, onDealClick }) {
 
       {/* Deal feed */}
       <div className="flex-1 overflow-y-auto px-4 pb-4">
+        {/* Expiring soon banner */}
+        {!activeCat && !search && (
+          <div className="mb-4">
+            <div className="flex items-center justify-between mb-2">
+              <h2 className="text-base font-bold text-gray-900">⏰ Últimas horas</h2>
+              <span className="text-accent-500 text-xs font-medium">Ver todas</span>
+            </div>
+            <div className="flex gap-3 overflow-x-auto no-scrollbar -mx-4 px-4">
+              {deals.filter(d => parseInt(d.expiry) <= 12).slice(0, 3).map((deal) => (
+                <button
+                  key={`exp-${deal.id}`}
+                  onClick={() => onDealClick(deal)}
+                  className="shrink-0 w-[200px] bg-red-50 border border-red-100 rounded-2xl overflow-hidden text-left active:scale-[0.97] transition-transform"
+                >
+                  <div className="h-20 relative overflow-hidden">
+                    <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" />
+                    <div className="absolute top-1.5 right-1.5 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+                      {deal.expiry}
+                    </div>
+                  </div>
+                  <div className="p-2.5">
+                    <p className="font-semibold text-xs text-gray-900">{deal.brand}</p>
+                    <p className="text-accent-500 text-xs font-bold">{deal.discount}</p>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Section header */}
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-lg font-bold text-gray-900">
