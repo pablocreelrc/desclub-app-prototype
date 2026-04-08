@@ -1,10 +1,18 @@
 {
-  "name": "Run DescluB Prototype",
-  "description": "Install dependencies and start dev server",
-  "steps": [
+  "name": "Start Dev Server",
+  "mode": "sequential",
+  "tasks": [
     {
-      "type": "shell",
-      "command": "npm install && npm run dev -- --host 0.0.0.0 --port 3000"
+      "task": "shell.exec",
+      "args": {
+        "command": "npm install"
+      }
+    },
+    {
+      "task": "shell.exec",
+      "args": {
+        "command": "npm run dev -- --host 0.0.0.0 --port 3000"
+      }
     }
   ]
 }
