@@ -5,10 +5,13 @@ export default function CardScreen() {
   const [addedToWallet, setAddedToWallet] = useState(false)
 
   return (
-    <div className="h-full flex flex-col bg-white font-va">
+    <div className="h-full flex flex-col bg-white font-va screen-enter">
       {/* Header */}
-      <div className="bg-primary-500 pt-14 pb-5 px-5">
-        <h1 className="text-white text-xl font-bold">💳 Mi Tarjeta</h1>
+      <div className="bg-primary-500 pt-safe-header md:pt-14 pb-5 px-5">
+        <h1 className="text-white text-xl font-bold tracking-tight flex items-center gap-2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="4" width="22" height="16" rx="3"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          Mi Tarjeta
+        </h1>
         <p className="text-white/70 text-[13px] mt-0.5">Membresía virtual DescluB</p>
       </div>
 
@@ -99,12 +102,12 @@ export default function CardScreen() {
         {/* Stats */}
         <div className="grid grid-cols-3 gap-3 mb-5">
           {[
-            { value: '23', label: 'Canjes', icon: '🎟' },
-            { value: '12', label: 'Favoritos', icon: '❤️' },
-            { value: '48', label: 'Visitas', icon: '👣' },
+            { value: '23', label: 'Canjes', svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6246EA" strokeWidth="2" strokeLinecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 8l-4 4-4-4"/></svg> },
+            { value: '12', label: 'Favoritos', svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="#E45A3B" stroke="#E45A3B" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> },
+            { value: '48', label: 'Visitas', svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2" strokeLinecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> },
           ].map((stat) => (
             <div key={stat.label} className="bg-gray-50 rounded-2xl p-3.5 text-center">
-              <p className="text-lg mb-1">{stat.icon}</p>
+              <div className="flex justify-center mb-1">{stat.svg}</div>
               <p className="text-xl font-bold text-gray-900">{stat.value}</p>
               <p className="text-[11px] text-gray-500 mt-0.5">{stat.label}</p>
             </div>
@@ -119,7 +122,9 @@ export default function CardScreen() {
           { brand: 'Liverpool', date: '3 abr, 2:10 PM', discount: '20% OFF', saved: '$580' },
         ].map((item, i) => (
           <div key={i} className="flex items-center gap-3 py-3 border-b border-gray-50 last:border-0">
-            <div className="w-10 h-10 bg-primary-50 rounded-xl flex items-center justify-center text-sm">🎟</div>
+            <div className="w-10 h-10 bg-primary-50 rounded-xl flex items-center justify-center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6246EA" strokeWidth="2" strokeLinecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 8l-4 4-4-4"/></svg>
+            </div>
             <div className="flex-1">
               <p className="text-sm font-semibold text-gray-900">{item.brand}</p>
               <p className="text-xs text-gray-400">{item.date}</p>

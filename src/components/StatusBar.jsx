@@ -23,8 +23,8 @@ export default function StatusBar({ variant = 'light' }) {
   const c = variant === 'dark' ? '#fff' : '#000'
 
   return (
-    <div className="absolute top-0 left-0 right-0 z-40 pointer-events-none" style={{ height: 54 }}>
-      {/* Dynamic Island */}
+    <div className="absolute top-0 left-0 right-0 z-40 pointer-events-none hidden md:block" style={{ height: 54 }}>
+      {/* Dynamic Island — desktop only (real phones have their own) */}
       <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-[126px] h-[37px] bg-black rounded-[20px]" />
 
       {/* Left: time */}

@@ -114,15 +114,15 @@
    VERSION-SPECIFIC TYPOGRAPHY
    ═══════════════════════════════════════ */
 
-/* Version A: DM Sans — rounded, warm, approachable */
-.font-va { font-family: 'DM Sans', system-ui, sans-serif; }
+/* Version A: Plus Jakarta Sans — geometric, warm, modern */
+.font-va { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 
 /* Version B: Instrument Serif + Manrope — editorial luxury */
 .font-vb-display { font-family: 'Instrument Serif', Georgia, serif; }
 .font-vb { font-family: 'Manrope', system-ui, sans-serif; }
 
-/* Version C: Sora — geometric, fintech-grade */
-.font-vc { font-family: 'Sora', system-ui, sans-serif; }
+/* Version C: Outfit — geometric, fintech-grade, slightly friendlier than Sora */
+.font-vc { font-family: 'Outfit', system-ui, sans-serif; }
 
 /* ═══════════════════════════════════════
    SMOOTH TAB TRANSITIONS
@@ -131,12 +131,30 @@
   animation: fadeUp 0.3s ease-out;
 }
 
+/* Screen transition — slide up with fade */
+@keyframes screenEnter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.screen-enter {
+  animation: screenEnter 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
 /* Better active states */
 .press-scale {
   transition: transform 0.15s ease;
 }
 .press-scale:active {
   transform: scale(0.97);
+}
+
+/* Smooth card hover/press with lift */
+.card-lift {
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.2s ease;
+}
+.card-lift:active {
+  transform: scale(0.96) translateY(1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 /* Gold accent for Version B */

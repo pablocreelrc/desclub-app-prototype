@@ -32,7 +32,7 @@ export default function V2Login({ onLogin }) {
       </div>
 
       {/* Auth buttons */}
-      <div className="px-8 pb-10 flex flex-col gap-3">
+      <div className="px-8 flex flex-col gap-3" style={{ paddingBottom: 'calc(2.5rem + env(safe-area-inset-bottom, 0px))' }}>
         <button
           onClick={onLogin}
           className="w-full h-[52px] bg-white text-black rounded-xl font-semibold text-sm flex items-center justify-center gap-3 active:scale-[0.98] transition-transform"

@@ -55,7 +55,7 @@ export default function V1Phone() {
   return (
     <div className="h-full flex flex-col bg-white relative">
       <StatusBar variant="light" />
-      <div className="flex-1 overflow-hidden">
+      <div className="flex-1 min-h-0">
         {tab === 'home' && <HomeScreen deals={DEALS} onDealClick={(d) => { setSelectedDeal(d); setScreen('detail'); }} />}
         {tab === 'map' && <MapScreen deals={DEALS} onDealClick={(d) => { setSelectedDeal(d); setScreen('detail'); }} />}
         {tab === 'card' && <CardScreen />}

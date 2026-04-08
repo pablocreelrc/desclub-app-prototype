@@ -4,7 +4,7 @@
  */
 export default function IPhoneFrame({ children, version = 'a' }) {
   const bgClass = {
-    a: 'md:from-slate-200 md:via-slate-100 md:to-white',
+    a: 'md:from-[#f0eef5] md:via-[#f5f3fa] md:to-white',
     b: 'md:from-[#0c0c14] md:via-[#12121c] md:to-[#0c0c14]',
     c: 'md:from-[#0c0c14] md:via-[#0f1a14] md:to-[#0c0c14]',
   }[version]
@@ -24,10 +24,10 @@ export default function IPhoneFrame({ children, version = 'a' }) {
           <div className="hidden md:block absolute -right-[2.5px] top-[190px] w-[2.5px] h-[65px] bg-[#2d2d2d] rounded-r-[2px]" />
 
           {/* Screen area */}
-          <div className="iphone-screen w-full h-full md:w-[393px] md:h-[852px] md:rounded-[44px] overflow-hidden relative">
+          <div className="iphone-screen w-full h-full md:w-[393px] md:h-[852px] md:rounded-[44px] overflow-hidden overflow-x-hidden relative">
             {children}
-            {/* Home indicator */}
-            <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-[134px] h-[5px] rounded-full z-50 bg-white/20 pointer-events-none" />
+            {/* Home indicator — desktop only (real phones have their own) */}
+            <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-[134px] h-[5px] rounded-full z-50 bg-white/20 pointer-events-none hidden md:block" />
           </div>
         </div>
 

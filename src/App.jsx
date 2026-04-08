@@ -7,7 +7,7 @@ import IPhoneFrame from './components/iPhoneFrame'
 import VersionToggle from './components/VersionToggle'
 
 const VERSIONS = [
-  { key: 'a', sub: 'Consumer', color: '#2196F3' },
+  { key: 'a', sub: 'Consumer', color: '#6246EA' },
   { key: 'b', sub: 'Membership Pass', color: '#ffffff' },
   { key: 'c', sub: 'Puntos + Wallet', color: '#3b82f6' },
 ]
@@ -52,6 +52,15 @@ export default function App() {
     window.addEventListener('hashchange', onHash)
     return () => window.removeEventListener('hashchange', onHash)
   }, [])
+
+  // Set mobile background color to match version theme
+  useEffect(() => {
+    const bg = version === 'a' ? '#ffffff' : '#000000'
+    document.documentElement.style.setProperty('--app-bg', bg)
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content',
+      version === 'a' ? '#1976D2' : '#000000'
+    )
+  }, [version])
 
   const changeVersion = (v) => {
     window.location.hash = v

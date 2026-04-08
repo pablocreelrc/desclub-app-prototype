@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 
 const VERSION_CONFIG = {
-  a: { label: 'Consumer', color: '#2196F3' },
+  a: { label: 'Consumer', color: '#6246EA' },
   b: { label: 'Pass', color: '#ffffff' },
   c: { label: 'Puntos', color: '#3b82f6' },
 }
@@ -21,7 +21,7 @@ export default function VersionToggle({ active, onChange }) {
   const accent = VERSION_CONFIG[active]?.color ?? '#2196F3'
 
   return (
-    <div ref={ref} className="fixed z-[60]" style={{ bottom: 96, right: 14 }}>
+    <div ref={ref} className="fixed z-[60]" style={{ bottom: 'calc(96px + env(safe-area-inset-bottom, 0px))', right: 14 }}>
       {/* Expanded picker */}
       {open && (
         <div className="flex flex-col gap-1.5 mb-2 animate-in">

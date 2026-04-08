@@ -1,22 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-50: #E3F2FD;
-  --color-primary-100: #BBDEFB;
-  --color-primary-200: #90CAF9;
-  --color-primary-300: #64B5F6;
-  --color-primary-400: #42A5F5;
-  --color-primary-500: #2196F3;
-  --color-primary-600: #1E88E5;
-  --color-primary-700: #1976D2;
-  --color-primary-800: #1565C0;
-  --color-primary-900: #0D47A1;
+  /* Warm indigo-violet — distinctive, premium, not generic blue */
+  --color-primary-50: #EEF0FF;
+  --color-primary-100: #DEE1FF;
+  --color-primary-200: #C4CAFF;
+  --color-primary-300: #9BA3FF;
+  --color-primary-400: #7C6EF6;
+  --color-primary-500: #6246EA;
+  --color-primary-600: #5536D4;
+  --color-primary-700: #4A2DB8;
+  --color-primary-800: #3D2596;
+  --color-primary-900: #2A1A6B;
 
-  --color-accent-400: #FFA726;
-  --color-accent-500: #FF8C00;
-  --color-accent-600: #F57C00;
+  /* Coral-tangerine accent — warm, energetic, pairs with indigo */
+  --color-accent-400: #FF8566;
+  --color-accent-500: #E45A3B;
+  --color-accent-600: #C8432B;
 
-  --color-surface: #F7F8F9;
+  --color-surface: #F8F7FA;
   --color-card: #FFFFFF;
 }
 
@@ -27,14 +29,16 @@ html, body, #root {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-family: 'DM Sans', 'Manrope', 'Sora', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  max-width: 100vw;
+  font-family: 'Plus Jakarta Sans', 'Manrope', 'Outfit', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
-  background: #000;
+  background: var(--app-bg, #fff);
 }
 
 /* Desktop: unlock height for showcase scroll */
@@ -45,6 +49,18 @@ html, body, #root {
     overflow: auto;
     background: transparent;
   }
+}
+
+/* Safe area inset utilities for real devices */
+.pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+.pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.pt-safe-header { padding-top: calc(env(safe-area-inset-top, 0px) + 12px); }
+
+@media (min-width: 768px) {
+  /* On desktop, use the fixed status bar height instead of safe area */
+  .pt-safe { padding-top: 0px; }
+  .pb-safe { padding-bottom: 0px; }
+  .pt-safe-header { padding-top: 0px; }
 }
 
 input, textarea {

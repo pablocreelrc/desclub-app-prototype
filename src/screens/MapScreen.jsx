@@ -7,7 +7,7 @@ import 'leaflet/dist/leaflet.css'
 const createIcon = (discount) => L.divIcon({
   className: '',
   html: `<div style="
-    background: #FF8C00;
+    background: #E45A3B;
     color: white;
     font-weight: 700;
     font-size: 11px;
@@ -27,10 +27,13 @@ export default function MapScreen({ deals, onDealClick }) {
   const center = [19.4310, -99.1350]
 
   return (
-    <div className="h-full flex flex-col bg-white relative">
+    <div className="h-full flex flex-col bg-white relative screen-enter">
       {/* Header */}
-      <div className="bg-primary-500 pt-14 pb-4 px-5 z-10">
-        <h1 className="text-white text-xl font-bold">📍 Mapa</h1>
+      <div className="bg-primary-500 pt-safe-header md:pt-14 pb-4 px-5 z-10">
+        <h1 className="text-white text-xl font-bold tracking-tight flex items-center gap-2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Mapa
+        </h1>
         <p className="text-white/70 text-[13px] mt-0.5">{deals.length} descuentos cerca de ti</p>
       </div>
 

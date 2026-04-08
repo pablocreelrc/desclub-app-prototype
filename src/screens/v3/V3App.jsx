@@ -35,7 +35,7 @@ function DealDetail({ deal, onBack }) {
         <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f18] via-transparent to-black/30" />
         <button
           onClick={onBack}
-          className="absolute top-14 left-5 w-10 h-10 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center text-white text-lg active:scale-90 transition-transform"
+          className="absolute top-[max(env(safe-area-inset-top,12px),12px)] md:top-14 left-5 w-10 h-10 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center text-white text-lg active:scale-90 transition-transform"
         >
           ←
         </button>
@@ -118,7 +118,7 @@ function DealDetail({ deal, onBack }) {
       )}
 
       {/* CTA bar */}
-      <div className="absolute bottom-0 left-0 right-0 bg-black/90 backdrop-blur-lg border-t border-[#1a1a25] px-5 pt-3 pb-8 flex gap-3">
+      <div className="absolute bottom-0 left-0 right-0 bg-black/90 backdrop-blur-lg border-t border-[#1a1a25] px-5 pt-3 flex gap-3" style={{ paddingBottom: 'calc(2rem + env(safe-area-inset-bottom, 0px))' }}>
         <button
           onClick={() => setShowQR(true)}
           className="flex-1 h-[52px] bg-white text-black rounded-2xl flex items-center justify-center font-bold text-[17px] active:scale-[0.97] transition-transform"
@@ -531,7 +531,7 @@ export default function V3App() {
     <div className="h-full flex flex-col bg-black text-white relative overflow-hidden font-vc">
       <StatusBar variant="dark" />
       {/* Header */}
-      <div className="pt-14 pb-2 px-5 flex items-center justify-between bg-black">
+      <div className="pt-safe-header md:pt-14 pb-2 px-5 flex items-center justify-between bg-black">
         <div className="flex items-center gap-1.5 bg-[#111] border border-[#1a1a1a] rounded-full px-3 py-1.5">
           <span className="text-blue-400 text-xs">👤</span>
           <span className="text-white text-xs font-bold">{points.toLocaleString()} pts</span>
@@ -616,7 +616,7 @@ export default function V3App() {
       )}
 
       {/* Tab bar */}
-      <div className="shrink-0 bg-black border-t border-[#1a1a25] flex items-center justify-around px-2 pt-2 pb-6">
+      <div className="shrink-0 bg-black border-t border-[#1a1a25] flex items-center justify-around px-2 pt-2" style={{ paddingBottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}>
         {TABS.map((tab) => (
           <button key={tab.key} onClick={() => tab.key === 'center' ? setShowQRCard(true) : setActiveTab(tab.key)} className={`flex flex-col items-center gap-0.5 ${tab.key === 'center' ? 'relative -mt-5' : ''}`}>
             {tab.key === 'center' ? (

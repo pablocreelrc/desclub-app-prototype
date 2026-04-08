@@ -34,7 +34,7 @@ function DealDetail({ deal, onBack }) {
       <div className="h-64 relative shrink-0 overflow-hidden">
         <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />
-        <button onClick={onBack} className="absolute top-14 left-5 w-10 h-10 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center text-white text-lg active:scale-90 transition-transform">←</button>
+        <button onClick={onBack} className="absolute top-[max(env(safe-area-inset-top,12px),12px)] md:top-14 left-5 w-10 h-10 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center text-white text-lg active:scale-90 transition-transform">←</button>
         <div className="absolute bottom-4 left-5">
           <span className="bg-white text-black text-2xl font-bold px-5 py-2.5 rounded-xl">{deal.discount}</span>
         </div>
@@ -91,7 +91,7 @@ function DealDetail({ deal, onBack }) {
         </div>
       )}
 
-      <div className="absolute bottom-0 left-0 right-0 bg-black/90 backdrop-blur-lg border-t border-[#222] px-5 pt-3 pb-8">
+      <div className="absolute bottom-0 left-0 right-0 bg-black/90 backdrop-blur-lg border-t border-[#222] px-5 pt-3" style={{ paddingBottom: 'calc(2rem + env(safe-area-inset-bottom, 0px))' }}>
         <button onClick={() => setShowQR(true)} className="w-full h-[52px] bg-white text-black rounded-xl flex items-center justify-center font-bold text-[17px] active:scale-[0.97] transition-transform">
           Canjear descuento
         </button>
@@ -430,7 +430,7 @@ export default function V2App() {
       <StatusBar variant="dark" />
 
       {/* Header — PGA style: logo + welcome + membership card button */}
-      <div className="pt-14 pb-3 px-5 bg-[#0a0f1a]">
+      <div className="pt-safe-header md:pt-14 pb-3 px-5 bg-[#0a0f1a]">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-[#1a2744] rounded-md flex items-center justify-center">
