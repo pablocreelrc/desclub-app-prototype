@@ -21,7 +21,7 @@ export default function HomeScreen({ deals, onDealClick }) {
   })
 
   return (
-    <div className="h-full flex flex-col bg-white">
+    <div className="h-full flex flex-col bg-white font-va">
       {/* Header */}
       <div className="bg-gradient-to-br from-primary-500 to-primary-700 pt-[60px] pb-5 px-5">
         <div className="flex items-center justify-between">
@@ -111,11 +111,11 @@ export default function HomeScreen({ deals, onDealClick }) {
 
         {/* Deal cards grid */}
         <div className="grid grid-cols-2 gap-3">
-          {filtered.map((deal) => (
+          {filtered.map((deal, idx) => (
             <button
               key={deal.id}
               onClick={() => onDealClick(deal)}
-              className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden text-left active:scale-[0.97] transition-transform group"
+              className={`bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden text-left active:scale-[0.97] transition-transform group animate-scale-in stagger-${Math.min(idx + 1, 8)}`}
             >
               {/* Image */}
               <div className="h-28 relative overflow-hidden">

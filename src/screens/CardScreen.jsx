@@ -5,7 +5,7 @@ export default function CardScreen() {
   const [addedToWallet, setAddedToWallet] = useState(false)
 
   return (
-    <div className="h-full flex flex-col bg-white">
+    <div className="h-full flex flex-col bg-white font-va">
       {/* Header */}
       <div className="bg-primary-500 pt-14 pb-5 px-5">
         <h1 className="text-white text-xl font-bold">💳 Mi Tarjeta</h1>

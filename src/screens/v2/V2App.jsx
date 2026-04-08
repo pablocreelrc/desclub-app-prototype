@@ -29,7 +29,7 @@ function DealDetail({ deal, onBack }) {
   if (!deal) return null
 
   return (
-    <div className="h-full flex flex-col bg-black relative">
+    <div className="h-full flex flex-col bg-black relative font-vb">
       <StatusBar variant="dark" />
       <div className="h-64 relative shrink-0 overflow-hidden">
         <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" />
@@ -135,8 +135,8 @@ function OverviewTab({ onDealClick, onShowCard }) {
       </div>
 
       {/* Around Me — PGA "Around Me" section */}
-      <h2 className="text-white text-2xl font-bold mb-1">Cerca de ti</h2>
-      <div className="w-16 h-0.5 bg-blue-500 mb-5" />
+      <h2 className="text-white text-2xl font-bold mb-1 font-vb-display italic">Cerca de ti</h2>
+      <div className="w-16 h-0.5 gold-line mb-5" />
 
       <div className="space-y-0">
         {DEALS.filter(d => d.detail).slice(0, 3).map((deal) => (
@@ -152,8 +152,8 @@ function OverviewTab({ onDealClick, onShowCard }) {
       </div>
 
       {/* Content & Promotions — PGA "Content & Promotions" carousel */}
-      <h2 className="text-white text-2xl font-bold mt-10 mb-1">Contenido y Promociones</h2>
-      <div className="w-16 h-0.5 bg-blue-500 mb-5" />
+      <h2 className="text-white text-2xl font-bold mt-10 mb-1 font-vb-display italic">Contenido y Promociones</h2>
+      <div className="w-16 h-0.5 gold-line mb-5" />
 
       <div className="space-y-4">
         {DEALS.slice(3, 6).map((deal) => (
@@ -256,8 +256,8 @@ function AccountTab({ onLogout }) {
       {subTab === 'Perfil' && (
         <div>
           {/* Profile section — PGA style with line separators */}
-          <h2 className="text-white text-2xl font-bold mb-1">Perfil</h2>
-          <div className="w-full h-0.5 bg-blue-500 mb-4" />
+          <h2 className="text-white text-2xl font-bold mb-1 font-vb-display italic">Perfil</h2>
+          <div className="w-full h-0.5 gold-line mb-4" />
 
           {[
             { label: 'Cuenta', value: 'Pablo Creel' },
@@ -273,8 +273,8 @@ function AccountTab({ onLogout }) {
             </button>
           ))}
 
-          <h2 className="text-white text-2xl font-bold mt-8 mb-1">Preferencias</h2>
-          <div className="w-full h-0.5 bg-blue-500 mb-4" />
+          <h2 className="text-white text-2xl font-bold mt-8 mb-1 font-vb-display italic">Preferencias</h2>
+          <div className="w-full h-0.5 gold-line mb-4" />
 
           {[
             { label: 'Idioma', value: 'Español' },
@@ -299,8 +299,8 @@ function AccountTab({ onLogout }) {
 
       {subTab === 'Favoritos' && (
         <div>
-          <h2 className="text-white text-2xl font-bold mb-1">Marcas Favoritas</h2>
-          <div className="w-full h-0.5 bg-blue-500 mb-4" />
+          <h2 className="text-white text-2xl font-bold mb-1 font-vb-display italic">Marcas Favoritas</h2>
+          <div className="w-full h-0.5 gold-line mb-4" />
 
           {['Cinépolis', 'Starbucks', 'Liverpool', 'Tim Hortons', 'Sport City'].map((brand) => (
             <button key={brand} className="w-full flex items-center justify-between py-5 border-b border-[#1a1a1a] text-left active:bg-[#111]">
@@ -309,8 +309,8 @@ function AccountTab({ onLogout }) {
             </button>
           ))}
 
-          <h2 className="text-white text-2xl font-bold mt-8 mb-1">Categorías Favoritas</h2>
-          <div className="w-full h-0.5 bg-blue-500 mb-4" />
+          <h2 className="text-white text-2xl font-bold mt-8 mb-1 font-vb-display italic">Categorías Favoritas</h2>
+          <div className="w-full h-0.5 gold-line mb-4" />
 
           {[
             { label: 'Entretenimiento', count: 2 },
@@ -338,8 +338,8 @@ function AccountTab({ onLogout }) {
             </div>
           </button>
 
-          <h2 className="text-white text-2xl font-bold mt-8 mb-1">Comunicaciones</h2>
-          <div className="w-full h-0.5 bg-blue-500 mb-2" />
+          <h2 className="text-white text-2xl font-bold mt-8 mb-1 font-vb-display italic">Comunicaciones</h2>
+          <div className="w-full h-0.5 gold-line mb-2" />
           <p className="text-[#888] text-sm mb-6">Elige qué comunicaciones quieres recibir de DescluB.</p>
 
           <h3 className="text-white text-lg font-bold mb-1">Newsletters DescluB</h3>
@@ -378,8 +378,8 @@ function SupportTab() {
 
   return (
     <div className="px-5 pb-8">
-      <h2 className="text-white text-2xl font-bold mb-1">FAQs</h2>
-      <div className="w-full h-0.5 bg-blue-500 mb-4" />
+      <h2 className="text-white text-2xl font-bold mb-1 font-vb-display italic">FAQs</h2>
+      <div className="w-full h-0.5 gold-line mb-4" />
 
       {faqs.map((faq, i) => (
         <div key={i}>
@@ -426,7 +426,7 @@ export default function V2App() {
   }
 
   return (
-    <div className="h-full flex flex-col bg-black text-white relative">
+    <div className="h-full flex flex-col bg-black text-white relative font-vb">
       <StatusBar variant="dark" />
 
       {/* Header — PGA style: logo + welcome + membership card button */}
@@ -437,8 +437,8 @@ export default function V2App() {
               <span className="text-white text-lg font-bold">◎</span>
             </div>
             <div>
-              <p className="text-white text-sm font-bold tracking-tight leading-none">DESCLUB</p>
-              <p className="text-white text-lg font-black tracking-tight leading-none">PASS</p>
+              <p className="text-white text-sm font-bold tracking-tight leading-none font-vb">DESCLUB</p>
+              <p className="text-white text-lg font-black tracking-tight leading-none font-vb-display italic">PASS</p>
             </div>
           </div>
           <button onClick={() => setLoggedIn(false)} className="w-7 h-7 rounded-full border border-[#444] flex items-center justify-center text-[#888] text-xs active:bg-[#222]">✕</button>

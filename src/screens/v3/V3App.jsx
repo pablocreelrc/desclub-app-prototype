@@ -528,7 +528,7 @@ export default function V3App() {
   }
 
   return (
-    <div className="h-full flex flex-col bg-black text-white relative overflow-hidden">
+    <div className="h-full flex flex-col bg-black text-white relative overflow-hidden font-vc">
       <StatusBar variant="dark" />
       {/* Header */}
       <div className="pt-14 pb-2 px-5 flex items-center justify-between bg-black">
@@ -620,7 +620,7 @@ export default function V3App() {
         {TABS.map((tab) => (
           <button key={tab.key} onClick={() => tab.key === 'center' ? setShowQRCard(true) : setActiveTab(tab.key)} className={`flex flex-col items-center gap-0.5 ${tab.key === 'center' ? 'relative -mt-5' : ''}`}>
             {tab.key === 'center' ? (
-              <div className="w-14 h-14 bg-blue-500 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-blue-500/30 active:scale-95 transition-transform">
+              <div className="w-14 h-14 bg-blue-500 rounded-full flex items-center justify-center text-white text-xl font-bold dc-glow active:scale-95 transition-transform">
                 DC
               </div>
             ) : (

@@ -1,6 +1,6 @@
 export default function V2Login({ onLogin }) {
   return (
-    <div className="h-full flex flex-col bg-black">
+    <div className="h-full flex flex-col bg-black font-vb">
       {/* Hero — PGA Tour Pass style: dark, logo, welcome */}
       <div className="flex-1 flex flex-col items-center justify-center px-10 text-center">
         <div className="mb-8">
@@ -9,8 +9,8 @@ export default function V2Login({ onLogin }) {
               <span className="text-white text-2xl font-bold">◎</span>
             </div>
             <div className="text-left">
-              <p className="text-white text-2xl font-bold tracking-tight leading-none">DESCLUB</p>
-              <p className="text-white text-3xl font-black tracking-tight leading-none">PASS</p>
+              <p className="text-white text-2xl font-bold tracking-tight leading-none font-vb">DESCLUB</p>
+              <p className="text-white text-3xl font-black tracking-tight leading-none font-vb-display italic">PASS</p>
             </div>
           </div>
         </div>

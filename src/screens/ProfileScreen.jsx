@@ -47,7 +47,7 @@ export default function ProfileScreen({ onLogout }) {
   const [modal, setModal] = useState(null)
 
   return (
-    <div className="h-full flex flex-col bg-white relative">
+    <div className="h-full flex flex-col bg-white relative font-va">
       {/* Header */}
       <div className="bg-primary-500 pt-14 pb-6 px-5">
         <div className="flex items-center gap-4">

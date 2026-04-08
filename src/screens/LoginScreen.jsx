@@ -1,6 +1,6 @@
 export default function LoginScreen({ onLogin }) {
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col font-va">
       {/* Hero */}
       <div className="bg-gradient-to-br from-primary-600 via-primary-500 to-primary-700 px-10 pt-14 pb-8 flex flex-col items-center text-center relative overflow-hidden">
         <div className="absolute top-[-30px] right-[-30px] w-44 h-44 rounded-full border-[18px] border-white/5" />

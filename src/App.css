@@ -1,32 +1,145 @@
-/* Utility: hide scrollbar for category pills */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+/* ═══════════════════════════════════════
+   DESCLUB DESIGN SYSTEM
+   3 versions, 3 aesthetics, 1 platform
+   ═══════════════════════════════════════ */
+
+/* ─── Scrollbar hide ─── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── Card flip (Version A) ─── */
+.card-flip-container { perspective: 1000px; }
+.card-flip-inner { transition: transform 0.6s ease; transform-style: preserve-3d; position: relative; }
+.card-flip-inner.flipped { transform: rotateY(180deg); }
+.card-flip-front, .card-flip-back { backface-visibility: hidden; }
+.card-flip-back { position: absolute; top: 0; left: 0; width: 100%; transform: rotateY(180deg); }
+
+/* ═══════════════════════════════════════
+   ENTRANCE ANIMATIONS
+   ═══════════════════════════════════════ */
+
+/* Fade up — for content sections */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Card flip animation */
-.card-flip-container {
-  perspective: 1000px;
+/* Scale in — for cards */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
-.card-flip-inner {
-  transition: transform 0.6s ease;
-  transform-style: preserve-3d;
-  position: relative;
+
+/* Slide in from right — for pills/chips */
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
 }
-.card-flip-inner.flipped {
-  transform: rotateY(180deg);
+
+/* Glow pulse — for DC center button */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.5), 0 0 60px rgba(59, 130, 246, 0.2); }
 }
-.card-flip-front,
-.card-flip-back {
-  backface-visibility: hidden;
+
+/* Shimmer — for loading/premium feel */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
-.card-flip-back {
+
+/* Apply entrance animations */
+.animate-fade-up {
+  animation: fadeUp 0.5s ease-out both;
+}
+.animate-scale-in {
+  animation: scaleIn 0.4s ease-out both;
+}
+.animate-slide-right {
+  animation: slideRight 0.4s ease-out both;
+}
+
+/* Staggered delays for lists */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+.stagger-7 { animation-delay: 0.35s; }
+.stagger-8 { animation-delay: 0.4s; }
+
+/* DC center button glow */
+.dc-glow {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* Premium shimmer effect for cards */
+.shimmer-bg {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.03) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════
+   GLASS MORPHISM
+   ═══════════════════════════════════════ */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ═══════════════════════════════════════
+   SUBTLE GRAIN TEXTURE (overlay)
+   ═══════════════════════════════════════ */
+.grain::after {
+  content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  transform: rotateY(180deg);
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ═══════════════════════════════════════
+   VERSION-SPECIFIC TYPOGRAPHY
+   ═══════════════════════════════════════ */
+
+/* Version A: DM Sans — rounded, warm, approachable */
+.font-va { font-family: 'DM Sans', system-ui, sans-serif; }
+
+/* Version B: Instrument Serif + Manrope — editorial luxury */
+.font-vb-display { font-family: 'Instrument Serif', Georgia, serif; }
+.font-vb { font-family: 'Manrope', system-ui, sans-serif; }
+
+/* Version C: Sora — geometric, fintech-grade */
+.font-vc { font-family: 'Sora', system-ui, sans-serif; }
+
+/* ═══════════════════════════════════════
+   SMOOTH TAB TRANSITIONS
+   ═══════════════════════════════════════ */
+.tab-content-enter {
+  animation: fadeUp 0.3s ease-out;
+}
+
+/* Better active states */
+.press-scale {
+  transition: transform 0.15s ease;
+}
+.press-scale:active {
+  transform: scale(0.97);
+}
+
+/* Gold accent for Version B */
+.gold-line {
+  background: linear-gradient(90deg, #C9A96E, #E8D5A8, #C9A96E);
 }
