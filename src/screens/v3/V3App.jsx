@@ -510,6 +510,7 @@ export default function V3App() {
   const [activeTab, setActiveTab] = useState('explore')
   const [selectedDeal, setSelectedDeal] = useState(null)
   const [showQRCard, setShowQRCard] = useState(false)
+  const [showAccount, setShowAccount] = useState(false)
   const points = 1250
 
   if (!loggedIn) {
@@ -537,7 +538,7 @@ export default function V3App() {
         </div>
         <div className="flex items-center gap-2">
           <button className="w-9 h-9 bg-[#111] border border-[#1a1a1a] rounded-full flex items-center justify-center text-white text-sm">🔔</button>
-          <button onClick={() => setLoggedIn(false)} className="w-9 h-9 bg-[#111] border border-[#1a1a1a] rounded-full flex items-center justify-center text-[#888] text-sm">⚙</button>
+          <button onClick={() => setShowAccount(true)} className="w-9 h-9 bg-[#111] border border-[#1a1a1a] rounded-full flex items-center justify-center text-[#888] text-sm">👤</button>
         </div>
       </div>
 
@@ -545,7 +546,6 @@ export default function V3App() {
       <div className="flex-1 overflow-y-auto">
         {activeTab === 'explore' && <ExploreTab onDealClick={setSelectedDeal} />}
         {activeTab === 'deals' && <DealsTab onDealClick={setSelectedDeal} />}
-        {activeTab === 'account' && <MyAccountTab />}
         {activeTab === 'rewards' && <RewardsTab onDealClick={setSelectedDeal} />}
         {activeTab === 'wallet' && <WalletTab />}
       </div>
@@ -566,6 +566,51 @@ export default function V3App() {
             <p className="text-xs text-[#666] font-mono">5114 1102 5020 1775</p>
             <p className="text-[10px] text-blue-400 mt-1">Pablo Creel • Gold</p>
             <button onClick={() => setShowQRCard(false)} className="mt-4 w-full h-11 bg-[#1a1a1a] rounded-xl text-white text-sm font-semibold">Cerrar</button>
+          </div>
+        </div>
+      )}
+
+      {/* Account Modal */}
+      {showAccount && (
+        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-end" onClick={() => setShowAccount(false)}>
+          <div className="bg-[#111] w-full rounded-t-3xl p-6 pb-10 border-t border-[#222]" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-5">
+              <h2 className="text-white text-lg font-bold">Mi Cuenta</h2>
+              <button onClick={() => setShowAccount(false)} className="text-[#666] text-xl">✕</button>
+            </div>
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-12 h-12 rounded-xl bg-[#1a1a1a] flex items-center justify-center text-white text-sm font-bold">PC</div>
+              <div>
+                <p className="text-white text-base font-bold">Pablo Creel</p>
+                <p className="text-blue-400 text-xs font-semibold">Gold • {points.toLocaleString()} puntos</p>
+              </div>
+            </div>
+            {[
+              { label: 'Historial de canjes', value: '23' },
+              { label: 'Marcas favoritas', value: '12' },
+              { label: 'Ahorro acumulado', value: '$18,320' },
+              { label: 'Notificaciones', value: 'On' },
+            ].map((item) => (
+              <div key={item.label} className="flex items-center justify-between py-4 border-b border-[#1a1a1a]">
+                <span className="text-white text-sm font-semibold">{item.label}</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-[#888] text-sm">{item.value}</span>
+                  <span className="text-[#555]">›</span>
+                </div>
+              </div>
+            ))}
+            <button
+              onClick={() => window.open('https://wa.me/525500000000', '_blank')}
+              className="w-full h-12 bg-[#25D366]/15 border border-[#25D366]/30 rounded-xl text-[#25D366] text-sm font-semibold flex items-center justify-center gap-2 mt-5"
+            >
+              💬 Soporte vía WhatsApp
+            </button>
+            <button
+              onClick={() => { setShowAccount(false); setLoggedIn(false) }}
+              className="w-full mt-3 py-4 text-red-400 text-sm font-semibold text-center"
+            >
+              Cerrar sesión
+            </button>
           </div>
         </div>
       )}

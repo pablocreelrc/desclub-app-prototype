@@ -441,7 +441,7 @@ export default function V2App() {
               <p className="text-white text-lg font-black tracking-tight leading-none">PASS</p>
             </div>
           </div>
-          <button className="w-7 h-7 rounded-full border border-[#444] flex items-center justify-center text-[#888] text-xs active:bg-[#222]">✕</button>
+          <button onClick={() => setLoggedIn(false)} className="w-7 h-7 rounded-full border border-[#444] flex items-center justify-center text-[#888] text-xs active:bg-[#222]">✕</button>
         </div>
 
         <p className="text-white text-lg font-bold mb-3">Bienvenido, Pablo</p>
