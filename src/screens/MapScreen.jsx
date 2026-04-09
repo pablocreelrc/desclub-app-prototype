@@ -26,7 +26,7 @@ export default function MapScreen({ deals, onDealClick }) {
   const center = [19.4310, -99.1350]
 
   return (
-    <div className="h-full flex flex-col bg-white font-va relative">
+    <div className="flex-1 min-h-0 flex flex-col bg-white font-va relative">
       {/* Header */}
       <div className="shrink-0 bg-primary-500 pb-3 px-5 pt-safe md:pt-[54px] z-10">
         <h1 className="text-white text-[20px] font-bold">Mapa</h1>

@@ -1,6 +1,6 @@
 export default function LoginScreen({ onLogin }) {
   return (
-    <div className="h-full flex flex-col font-va bg-white">
+    <div className="flex-1 min-h-0 flex flex-col font-va bg-white">
       {/* Hero */}
       <div className="flex-1 bg-primary-500 px-8 flex flex-col items-center justify-center text-center relative overflow-hidden">
         <div className="absolute top-[-40px] right-[-40px] w-44 h-44 rounded-full border-[18px] border-white/[0.06]" />

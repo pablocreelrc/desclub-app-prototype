@@ -5,7 +5,7 @@ export default function DealDetailScreen({ deal, saved, onToggleSave, onBack }) 
   if (!deal) return null
 
   return (
-    <div className="h-full flex flex-col bg-white font-va">
+    <div className="flex-1 min-h-0 flex flex-col bg-white font-va relative">
       {/* Hero */}
       <div className="h-48 md:h-56 relative shrink-0 overflow-hidden">
         <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" loading="lazy" />

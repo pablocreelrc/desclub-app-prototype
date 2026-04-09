@@ -33,7 +33,9 @@ export default function V1Phone() {
     return (
       <div className="h-full flex flex-col bg-white relative overflow-hidden">
         <StatusBar variant="light" />
-        <div className="flex-1 min-h-0"><LoginScreen onLogin={() => { setScreen('app'); setTab('home'); }} /></div>
+        <div className="flex-1 min-h-0 flex flex-col">
+          <LoginScreen onLogin={() => { setScreen('app'); setTab('home'); }} />
+        </div>
       </div>
     )
   }
@@ -42,20 +44,22 @@ export default function V1Phone() {
     return (
       <div className="h-full flex flex-col bg-white relative overflow-hidden">
         <StatusBar variant="light" />
-        <DealDetailScreen
-          deal={selectedDeal}
-          saved={savedDeals.includes(selectedDeal?.id)}
-          onToggleSave={() => toggleSave(selectedDeal?.id)}
-          onBack={() => setScreen('app')}
-        />
+        <div className="flex-1 min-h-0 flex flex-col">
+          <DealDetailScreen
+            deal={selectedDeal}
+            saved={savedDeals.includes(selectedDeal?.id)}
+            onToggleSave={() => toggleSave(selectedDeal?.id)}
+            onBack={() => setScreen('app')}
+          />
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="h-full flex flex-col bg-white relative">
+    <div className="h-full flex flex-col bg-white relative overflow-hidden">
       <StatusBar variant="light" />
-      <div className="flex-1 min-h-0">
+      <div className="flex-1 min-h-0 flex flex-col">
         {tab === 'home' && <HomeScreen deals={DEALS} onDealClick={(d) => { setSelectedDeal(d); setScreen('detail'); }} />}
         {tab === 'map' && <MapScreen deals={DEALS} onDealClick={(d) => { setSelectedDeal(d); setScreen('detail'); }} />}
         {tab === 'card' && <CardScreen />}

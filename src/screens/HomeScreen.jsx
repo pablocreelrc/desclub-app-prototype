@@ -24,7 +24,7 @@ export default function HomeScreen({ deals, onDealClick }) {
   })
 
   return (
-    <div className="h-full flex flex-col font-va" style={{ background: '#F7F8F9' }}>
+    <div className="flex-1 min-h-0 flex flex-col font-va" style={{ background: '#F7F8F9' }}>
       {/* ── Header ── */}
       <div className="shrink-0 bg-primary-500 px-5 pb-5 pt-safe md:pt-[54px]">
         <div className="flex items-center justify-between mb-4">
@@ -79,7 +79,7 @@ export default function HomeScreen({ deals, onDealClick }) {
             <div className="mb-5">
               <div className="flex items-center justify-between mb-2.5">
                 <h2 className="text-[15px] font-bold text-text-primary">Últimas horas</h2>
-                <span className="text-primary-500 text-[13px] font-semibold">Ver todo</span>
+                <button onClick={() => setActiveCat(null)} className="text-primary-500 text-[13px] font-semibold active:opacity-70">Ver todo</button>
               </div>
               <div className="flex gap-3 overflow-x-auto no-scrollbar -mx-4 px-4">
                 {deals.filter(d => parseInt(d.expiry) <= 12).slice(0, 4).map((deal) => (
