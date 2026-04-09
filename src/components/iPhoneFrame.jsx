@@ -4,7 +4,7 @@
  */
 export default function IPhoneFrame({ children, version = 'a' }) {
   const bgClass = {
-    a: 'md:from-[#f0eef5] md:via-[#f5f3fa] md:to-white',
+    a: 'md:from-slate-200 md:via-slate-100 md:to-white',
     b: 'md:from-[#0c0c14] md:via-[#12121c] md:to-[#0c0c14]',
     c: 'md:from-[#0c0c14] md:via-[#0f1a14] md:to-[#0c0c14]',
   }[version]

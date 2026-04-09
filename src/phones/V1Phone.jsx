@@ -31,16 +31,16 @@ export default function V1Phone() {
 
   if (screen === 'login') {
     return (
-      <div className="h-full flex flex-col bg-white relative">
+      <div className="h-full flex flex-col bg-white relative overflow-hidden">
         <StatusBar variant="light" />
-        <LoginScreen onLogin={() => { setScreen('app'); setTab('home'); }} />
+        <div className="flex-1 min-h-0"><LoginScreen onLogin={() => { setScreen('app'); setTab('home'); }} /></div>
       </div>
     )
   }
 
   if (screen === 'detail') {
     return (
-      <div className="h-full flex flex-col bg-white relative">
+      <div className="h-full flex flex-col bg-white relative overflow-hidden">
         <StatusBar variant="light" />
         <DealDetailScreen
           deal={selectedDeal}

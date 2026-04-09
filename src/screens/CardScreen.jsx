@@ -5,133 +5,120 @@ export default function CardScreen() {
   const [addedToWallet, setAddedToWallet] = useState(false)
 
   return (
-    <div className="h-full flex flex-col bg-white font-va screen-enter">
+    <div className="h-full flex flex-col bg-white font-va">
       {/* Header */}
-      <div className="bg-primary-500 pt-safe-header md:pt-14 pb-5 px-5">
-        <h1 className="text-white text-xl font-bold tracking-tight flex items-center gap-2">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="4" width="22" height="16" rx="3"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-          Mi Tarjeta
-        </h1>
-        <p className="text-white/70 text-[13px] mt-0.5">Membresía virtual DescluB</p>
+      <div className="shrink-0 bg-primary-500 pb-4 px-5 pt-safe md:pt-[54px]">
+        <h1 className="text-white text-[20px] font-bold">Mi Tarjeta</h1>
+        <p className="text-white/70 text-[13px]">Membresía virtual DescluB</p>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-5 pt-6 pb-4">
-        {/* Card with flip animation */}
-        <div className="card-flip-container mb-6">
+      <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-5 pt-5 pb-4">
+        {/* Card flip */}
+        <div className="card-flip-container mb-5">
           <button onClick={() => setFlipped(!flipped)} className="w-full">
-            <div className={`card-flip-inner ${flipped ? 'flipped' : ''}`} style={{ height: 224 }}>
+            <div className={`card-flip-inner ${flipped ? 'flipped' : ''}`} style={{ height: 210 }}>
               {/* Front */}
-              <div className="card-flip-front w-full h-56 bg-gradient-to-br from-primary-600 via-primary-500 to-primary-700 rounded-3xl p-6 relative overflow-hidden shadow-xl shadow-primary-500/30">
-                <div className="absolute inset-0 opacity-10">
-                  <div className="absolute top-[-20px] right-[-20px] w-40 h-40 rounded-full border-[20px] border-white" />
-                  <div className="absolute bottom-[-30px] left-[-30px] w-48 h-48 rounded-full border-[20px] border-white" />
-                </div>
+              <div className="card-flip-front w-full h-[210px] bg-gradient-to-br from-primary-600 via-primary-500 to-primary-700 rounded-2xl p-5 relative overflow-hidden shadow-lg shadow-primary-500/25">
+                <div className="absolute top-[-20px] right-[-20px] w-36 h-36 rounded-full border-[16px] border-white/[0.06]" />
+                <div className="absolute bottom-[-25px] left-[-25px] w-40 h-40 rounded-full border-[16px] border-white/[0.06]" />
                 <div className="relative z-10 h-full flex flex-col justify-between">
                   <div className="flex items-center justify-between">
-                    <span className="text-white text-2xl font-bold tracking-tight">DescluB</span>
-                    <span className="text-white/60 text-xs font-medium bg-white/10 px-3 py-1 rounded-full">PREMIUM</span>
+                    <span className="text-white text-[20px] font-bold">DescluB</span>
+                    <span className="text-white/60 text-[10px] font-semibold bg-white/10 px-2.5 py-1 rounded-full">PREMIUM</span>
                   </div>
                   <div>
-                    <p className="text-white/60 text-xs mb-1">Número de membresía</p>
-                    <p className="text-white text-xl font-mono tracking-[3px]">5114 1102 5020 1775</p>
+                    <p className="text-white/55 text-[11px] mb-0.5">Número de membresía</p>
+                    <p className="text-white text-[18px] font-mono tracking-[2px]">5114 1102 5020 1775</p>
                   </div>
-                  <div className="flex items-end justify-between">
+                  <div className="flex justify-between">
                     <div>
-                      <p className="text-white/60 text-[10px] mb-0.5">MIEMBRO</p>
-                      <p className="text-white text-sm font-semibold">Pablo Creel</p>
+                      <p className="text-white/50 text-[10px]">MIEMBRO</p>
+                      <p className="text-white text-[13px] font-semibold">Pablo Creel</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-white/60 text-[10px] mb-0.5">VENCE</p>
-                      <p className="text-white text-sm font-semibold">06/26</p>
+                      <p className="text-white/50 text-[10px]">VENCE</p>
+                      <p className="text-white text-[13px] font-semibold">06/26</p>
                     </div>
                   </div>
                 </div>
               </div>
               {/* Back */}
-              <div className="card-flip-back w-full h-56 bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl relative overflow-hidden shadow-xl">
-                <div className="w-full h-12 bg-gray-700 mt-8" />
-                <div className="px-6 mt-4">
-                  <div className="bg-white rounded-lg h-10 flex items-center justify-end px-4">
-                    <span className="text-gray-800 text-sm font-mono font-bold">CVV: 847</span>
+              <div className="card-flip-back w-full h-[210px] bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl relative overflow-hidden shadow-lg">
+                <div className="w-full h-10 bg-gray-700 mt-7" />
+                <div className="px-5 mt-3">
+                  <div className="bg-white rounded-md h-9 flex items-center justify-end px-3">
+                    <span className="text-gray-800 text-[13px] font-mono font-bold">CVV: 847</span>
                   </div>
                   <p className="text-gray-400 text-[10px] mt-3 leading-relaxed">
-                    Esta tarjeta es propiedad de Loyalty Solutions SA de CV.
-                    Para soporte: WhatsApp 💬
+                    Propiedad de Loyalty Solutions SA de CV. Soporte: WhatsApp 💬
                   </p>
                 </div>
-                <div className="absolute bottom-4 right-6">
-                  <span className="text-gray-600 text-lg font-bold">DescluB</span>
+                <div className="absolute bottom-3 right-5">
+                  <span className="text-gray-600 text-[16px] font-bold">DescluB</span>
                 </div>
               </div>
             </div>
           </button>
-          <p className="text-center text-xs text-gray-400 mt-3">Toca para {flipped ? 'ver frente' : 'ver reverso'}</p>
+          <p className="text-center text-[11px] text-text-secondary mt-2.5">Toca para {flipped ? 'ver frente' : 'ver reverso'}</p>
         </div>
 
-        {/* Add to Wallet */}
+        {/* Wallet */}
         <button
           onClick={() => setAddedToWallet(true)}
-          className={`w-full h-14 rounded-2xl font-semibold text-base flex items-center justify-center gap-3 transition-all mb-6 ${
+          className={`w-full h-12 rounded-xl font-semibold text-[14px] flex items-center justify-center gap-2 transition-all mb-5 ${
             addedToWallet
-              ? 'bg-green-50 text-green-600 border-2 border-green-200'
-              : 'bg-black text-white active:scale-[0.97]'
+              ? 'bg-green-50 text-green-600 border border-green-200'
+              : 'bg-gray-900 text-white active:scale-[0.98]'
           }`}
         >
-          {addedToWallet ? (
-            <>✅ Agregada a tu wallet</>
-          ) : (
-            <> Agregar a Apple Wallet</>
-          )}
+          {addedToWallet ? '✅ Agregada a Wallet' : ' Agregar a Apple Wallet'}
         </button>
 
         {/* Savings */}
-        <div className="bg-gradient-to-r from-accent-500 to-accent-400 rounded-2xl p-5 mb-5 shadow-lg shadow-accent-500/20">
-          <h3 className="text-white font-bold text-base mb-3">Tu ahorro</h3>
-          <div className="flex gap-4">
+        <div className="bg-gradient-to-r from-accent-500 to-accent-400 rounded-2xl p-4 mb-5 shadow-md shadow-accent-500/15">
+          <p className="text-white font-bold text-[14px] mb-2.5">Tu ahorro</p>
+          <div className="flex gap-3">
             <div className="flex-1 bg-white/20 rounded-xl p-3 text-center">
-              <p className="text-white text-2xl font-bold">$2,450</p>
-              <p className="text-white/70 text-[11px] mt-0.5">Este mes</p>
+              <p className="text-white text-[20px] font-bold">$2,450</p>
+              <p className="text-white/65 text-[11px]">Este mes</p>
             </div>
             <div className="flex-1 bg-white/20 rounded-xl p-3 text-center">
-              <p className="text-white text-2xl font-bold">$18,320</p>
-              <p className="text-white/70 text-[11px] mt-0.5">Acumulado</p>
+              <p className="text-white text-[20px] font-bold">$18,320</p>
+              <p className="text-white/65 text-[11px]">Acumulado</p>
             </div>
           </div>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-3 mb-5">
+        <div className="grid grid-cols-3 gap-2.5 mb-5">
           {[
-            { value: '23', label: 'Canjes', svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6246EA" strokeWidth="2" strokeLinecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 8l-4 4-4-4"/></svg> },
-            { value: '12', label: 'Favoritos', svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="#E45A3B" stroke="#E45A3B" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> },
-            { value: '48', label: 'Visitas', svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2" strokeLinecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> },
-          ].map((stat) => (
-            <div key={stat.label} className="bg-gray-50 rounded-2xl p-3.5 text-center">
-              <div className="flex justify-center mb-1">{stat.svg}</div>
-              <p className="text-xl font-bold text-gray-900">{stat.value}</p>
-              <p className="text-[11px] text-gray-500 mt-0.5">{stat.label}</p>
+            { value: '23', label: 'Canjes' },
+            { value: '12', label: 'Favoritos' },
+            { value: '48', label: 'Visitas' },
+          ].map((s) => (
+            <div key={s.label} className="bg-surface rounded-xl p-3 text-center">
+              <p className="text-[18px] font-bold text-text-primary">{s.value}</p>
+              <p className="text-[11px] text-text-secondary">{s.label}</p>
             </div>
           ))}
         </div>
 
-        {/* Recent redemptions */}
-        <h3 className="font-bold text-base text-gray-900 mb-3">Últimos canjes</h3>
+        {/* Recent */}
+        <p className="text-[14px] font-bold text-text-primary mb-2">Últimos canjes</p>
         {[
           { brand: 'Cinépolis', date: 'Hoy, 3:45 PM', discount: '2x1', saved: '$89' },
           { brand: 'Starbucks', date: 'Ayer, 9:20 AM', discount: '15% OFF', saved: '$42' },
           { brand: 'Liverpool', date: '3 abr, 2:10 PM', discount: '20% OFF', saved: '$580' },
         ].map((item, i) => (
-          <div key={i} className="flex items-center gap-3 py-3 border-b border-gray-50 last:border-0">
-            <div className="w-10 h-10 bg-primary-50 rounded-xl flex items-center justify-center">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6246EA" strokeWidth="2" strokeLinecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 8l-4 4-4-4"/></svg>
+          <div key={i} className="flex items-center gap-3 py-2.5 border-b border-gray-100 last:border-0">
+            <div className="w-9 h-9 bg-primary-50 rounded-lg flex items-center justify-center text-[14px]">🎟</div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[13px] font-semibold text-text-primary">{item.brand}</p>
+              <p className="text-[11px] text-text-secondary">{item.date}</p>
             </div>
-            <div className="flex-1">
-              <p className="text-sm font-semibold text-gray-900">{item.brand}</p>
-              <p className="text-xs text-gray-400">{item.date}</p>
-            </div>
-            <div className="text-right">
-              <p className="text-xs font-semibold text-green-600">-{item.saved}</p>
-              <p className="text-[10px] text-gray-400">{item.discount}</p>
+            <div className="text-right shrink-0">
+              <p className="text-[12px] font-semibold text-success">-{item.saved}</p>
+              <p className="text-[10px] text-text-secondary">{item.discount}</p>
             </div>
           </div>
         ))}

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 
 const VERSION_CONFIG = {
-  a: { label: 'Consumer', color: '#6246EA' },
+  a: { label: 'Consumer', color: '#2196F3' },
   b: { label: 'Pass', color: '#ffffff' },
   c: { label: 'Puntos', color: '#3b82f6' },
 }

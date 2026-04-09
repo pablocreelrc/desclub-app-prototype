@@ -3,11 +3,10 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
-// Custom marker icon
 const createIcon = (discount) => L.divIcon({
   className: '',
   html: `<div style="
-    background: #E45A3B;
+    background: #FF8C00;
     color: white;
     font-weight: 700;
     font-size: 11px;
@@ -27,14 +26,11 @@ export default function MapScreen({ deals, onDealClick }) {
   const center = [19.4310, -99.1350]
 
   return (
-    <div className="h-full flex flex-col bg-white relative screen-enter">
+    <div className="h-full flex flex-col bg-white font-va relative">
       {/* Header */}
-      <div className="bg-primary-500 pt-safe-header md:pt-14 pb-4 px-5 z-10">
-        <h1 className="text-white text-xl font-bold tracking-tight flex items-center gap-2">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Mapa
-        </h1>
-        <p className="text-white/70 text-[13px] mt-0.5">{deals.length} descuentos cerca de ti</p>
+      <div className="shrink-0 bg-primary-500 pb-3 px-5 pt-safe md:pt-[54px] z-10">
+        <h1 className="text-white text-[20px] font-bold">Mapa</h1>
+        <p className="text-white/70 text-[13px]">{deals.length} descuentos cerca</p>
       </div>
 
       {/* Map */}
@@ -57,35 +53,23 @@ export default function MapScreen({ deals, onDealClick }) {
           ))}
         </MapContainer>
 
-        {/* Selected deal card overlay */}
         {selected && (
-          <div className="absolute bottom-4 left-4 right-4 z-[1000]">
+          <div className="absolute bottom-3 left-3 right-3 z-[1000]">
             <button
               onClick={() => onDealClick(selected)}
-              className="w-full bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden flex active:scale-[0.98] transition-transform"
+              className="w-full bg-white rounded-2xl shadow-xl overflow-hidden flex active:scale-[0.98] transition-transform"
             >
-              <img src={selected.image} alt={selected.brand} className="w-28 h-28 object-cover" />
-              <div className="flex-1 p-3.5 text-left">
-                <div className="flex items-center justify-between">
-                  <p className="font-bold text-base text-gray-900">{selected.brand}</p>
-                  <span className="bg-accent-500 text-white text-xs font-bold px-2.5 py-1 rounded-lg">
-                    {selected.discount}
-                  </span>
+              <img src={selected.image} alt={selected.brand} className="w-24 h-24 object-cover shrink-0" />
+              <div className="flex-1 p-3 text-left min-w-0">
+                <div className="flex items-center justify-between gap-2">
+                  <p className="font-bold text-[15px] text-text-primary truncate">{selected.brand}</p>
+                  <span className="shrink-0 bg-accent-500 text-white text-[11px] font-bold px-2 py-0.5 rounded-md">{selected.discount}</span>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">{selected.detail}</p>
-                <div className="flex items-center gap-3 mt-2.5 text-[11px] text-gray-400">
-                  <span>📍 {selected.dist}</span>
-                  <span>⭐ {selected.rating}</span>
-                  <span>{selected.cat}</span>
-                </div>
+                <p className="text-[12px] text-text-secondary mt-0.5 truncate">{selected.detail}</p>
+                <p className="text-[11px] text-gray-400 mt-1">📍 {selected.dist} · ★ {selected.rating}</p>
               </div>
             </button>
-            <button
-              onClick={() => setSelected(null)}
-              className="absolute -top-2 -right-2 w-7 h-7 bg-gray-800 text-white rounded-full text-xs flex items-center justify-center shadow-md"
-            >
-              ✕
-            </button>
+            <button onClick={() => setSelected(null)} className="absolute -top-2 -right-2 w-6 h-6 bg-gray-800 text-white rounded-full text-[11px] flex items-center justify-center shadow-md">✕</button>
           </div>
         )}
       </div>

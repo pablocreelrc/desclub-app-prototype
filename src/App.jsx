@@ -7,7 +7,7 @@ import IPhoneFrame from './components/iPhoneFrame'
 import VersionToggle from './components/VersionToggle'
 
 const VERSIONS = [
-  { key: 'a', sub: 'Consumer', color: '#6246EA' },
+  { key: 'a', sub: 'Consumer', color: '#2196F3' },
   { key: 'b', sub: 'Membership Pass', color: '#ffffff' },
   { key: 'c', sub: 'Puntos + Wallet', color: '#3b82f6' },
 ]
@@ -58,7 +58,7 @@ export default function App() {
     const bg = version === 'a' ? '#ffffff' : '#000000'
     document.documentElement.style.setProperty('--app-bg', bg)
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content',
-      version === 'a' ? '#1976D2' : '#000000'
+      version === 'a' ? '#2196F3' : '#000000'
     )
   }, [version])
 
