@@ -59,7 +59,7 @@ export default function MapScreen({ deals, onDealClick }) {
               onClick={() => onDealClick(selected)}
               className="w-full bg-white rounded-2xl shadow-xl overflow-hidden flex active:scale-[0.98] transition-transform"
             >
-              <img src={selected.image} alt={selected.brand} className="w-24 h-24 object-cover shrink-0" />
+              <img src={selected.image} alt={selected.brand} className="w-24 h-24 object-cover shrink-0" loading="lazy" />
               <div className="flex-1 p-3 text-left min-w-0">
                 <div className="flex items-center justify-between gap-2">
                   <p className="font-bold text-[15px] text-text-primary truncate">{selected.brand}</p>

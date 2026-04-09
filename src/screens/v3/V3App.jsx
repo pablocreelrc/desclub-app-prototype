@@ -13,12 +13,19 @@ const DEALS = [
   { id: 8, brand: 'Devlyn', discount: '30% OFF', detail: 'Lentes y armazones', dist: '1.5 km', image: 'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=600&h=300&fit=crop', cat: 'Retail', points: '2X', description: '30% de descuento en armazones y lentes graduados. Incluye marcas premium como Ray-Ban y Oakley.', expiry: '25 días', redeemed: 198, terms: ['Armazones seleccionados', 'Incluye antirreflejante básico', 'Presentar membresía vigente', 'No acumulable'] },
 ]
 
+const TAB_ICONS = {
+  explore: 'M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z',
+  deals: 'M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z M7 7h.01',
+  center: 'M12 2L12 22 M2 12L22 12 M12 2a10 10 0 0 1 10 10a10 10 0 0 1-10 10a10 10 0 0 1-10-10A10 10 0 0 1 12 2z',
+  rewards: 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z',
+  wallet: 'M1 4h22v16H1z M1 10h22',
+}
 const TABS = [
-  { key: 'explore', icon: '🔍', label: 'Explorar' },
-  { key: 'deals', icon: '🏷', label: 'Ofertas' },
-  { key: 'center', icon: '◎', label: '' },
-  { key: 'rewards', icon: '🎯', label: 'Puntos' },
-  { key: 'wallet', icon: '💳', label: 'Wallet' },
+  { key: 'explore', label: 'Explorar' },
+  { key: 'deals', label: 'Ofertas' },
+  { key: 'center', label: 'DC' },
+  { key: 'rewards', label: 'Puntos' },
+  { key: 'wallet', label: 'Wallet' },
 ]
 
 /* Full-screen Deal Detail Page */
@@ -31,7 +38,7 @@ function DealDetail({ deal, onBack }) {
       <StatusBar variant="dark" />
       {/* Hero image */}
       <div className="h-64 relative shrink-0 overflow-hidden">
-        <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" />
+        <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f18] via-transparent to-black/30" />
         <button
           onClick={onBack}
@@ -132,12 +139,12 @@ function DealDetail({ deal, onBack }) {
 
 function ExploreTab({ onDealClick }) {
   const categories = [
-    { icon: '🍽', label: 'Comida' },
-    { icon: '🎬', label: 'Cine' },
-    { icon: '💪', label: 'Fitness' },
+    { icon: '•', label: 'Comida' },
+    { icon: '•', label: 'Cine' },
+    { icon: '•', label: 'Fitness' },
     { icon: '🎭', label: 'Experiencias' },
-    { icon: '🛍', label: 'Retail' },
-    { icon: '✈️', label: 'Viajes' },
+    { icon: '•', label: 'Retail' },
+    { icon: '•', label: 'Viajes' },
   ]
   return (
     <div className="pb-6">
@@ -183,7 +190,7 @@ function ExploreTab({ onDealClick }) {
         <div className="w-12 h-0.5 bg-blue-500 mb-3" />
         {DEALS.slice(0, 2).map((deal) => (
           <button key={deal.id} onClick={() => onDealClick(deal)} className="w-full bg-[#111] border border-[#1a1a1a] rounded-2xl mb-3 overflow-hidden text-left active:scale-[0.98] transition-transform">
-            <img src={deal.image} alt={deal.brand} className="w-full h-32 object-cover" />
+            <img src={deal.image} alt={deal.brand} className="w-full h-32 object-cover" loading="lazy" />
             <div className="p-4">
               <div className="flex items-center justify-between">
                 <div>
@@ -204,7 +211,7 @@ function ExploreTab({ onDealClick }) {
         <div className="w-12 h-0.5 bg-blue-500 mb-3" />
         <button onClick={() => onDealClick(DEALS[3])} className="w-full bg-[#111] border border-[#1a1a1a] rounded-2xl overflow-hidden text-left active:scale-[0.98] transition-transform mb-3">
           <div className="relative">
-            <img src={DEALS[3].image} alt="Sport City" className="w-full h-28 object-cover" />
+            <img src={DEALS[3].image} alt="Sport City" className="w-full h-28 object-cover" loading="lazy" />
             <div className="absolute top-2 right-2 bg-black/50 backdrop-blur text-white text-[10px] font-semibold px-2 py-0.5 rounded-full">⏰ Termina en 15d 22h</div>
           </div>
           <div className="p-4">
@@ -223,7 +230,7 @@ function ExploreTab({ onDealClick }) {
         <div className="w-12 h-0.5 bg-blue-500 mb-3" />
         {DEALS.slice(4, 8).map((deal) => (
           <button key={deal.id} onClick={() => onDealClick(deal)} className="w-full flex items-center gap-3 bg-[#111] border border-[#1a1a1a] rounded-xl p-3 mb-2 active:bg-[#1a1a1a]">
-            <img src={deal.image} alt={deal.brand} className="w-14 h-14 rounded-lg object-cover" />
+            <img src={deal.image} alt={deal.brand} className="w-14 h-14 rounded-lg object-cover" loading="lazy" />
             <div className="flex-1 text-left">
               <p className="text-white text-sm font-semibold">{deal.brand}</p>
               <p className="text-[#666] text-xs">{deal.detail}</p>
@@ -240,7 +247,7 @@ function ExploreTab({ onDealClick }) {
 function DealsTab({ onDealClick }) {
   const [activeCat, setActiveCat] = useState(null)
   const cats = [null, 'Comida', 'Entretenimiento', 'Retail', 'Fitness', 'Viajes', 'Transporte']
-  const catLabels = { null: '🔥 Todos', 'Comida': '🍽 Comida', 'Entretenimiento': '🎬 Cine', 'Retail': '🛍 Retail', 'Fitness': '💪 Fitness', 'Viajes': '✈️ Viajes', 'Transporte': '🚗 Autos' }
+  const catLabels = { null: 'Todos', 'Comida': 'Comida', 'Entretenimiento': 'Cine', 'Retail': 'Retail', 'Fitness': 'Fitness', 'Viajes': 'Viajes', 'Transporte': 'Autos' }
 
   const filtered = activeCat ? DEALS.filter(d => d.cat === activeCat) : DEALS
 
@@ -271,7 +278,7 @@ function DealsTab({ onDealClick }) {
         {filtered.map((deal) => (
           <button key={deal.id} onClick={() => onDealClick(deal)} className="w-full bg-[#111] border border-[#1a1a1a] rounded-2xl overflow-hidden text-left active:scale-[0.98] transition-transform">
             <div className="relative h-36">
-              <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" />
+              <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
               <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between">
                 <div>
@@ -382,7 +389,7 @@ function RewardsTab({ onDealClick }) {
           {DEALS.slice(0, 4).map((deal) => (
             <button key={deal.id} onClick={() => onDealClick(deal)} className="w-full bg-[#111] border border-[#1a1a1a] rounded-2xl overflow-hidden text-left active:scale-[0.98] transition-transform">
               <div className="relative h-32">
-                <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" />
+                <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                 <div className="absolute bottom-2 left-3 right-3 flex items-end justify-between">
                   <p className="text-white font-bold text-sm">{deal.brand}</p>
@@ -401,7 +408,7 @@ function RewardsTab({ onDealClick }) {
       {redeemTab === 'Viajes' && (
         <div>
           <div className="bg-[#111] border border-[#1a1a1a] rounded-2xl overflow-hidden mb-4">
-            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&h=200&fit=crop" alt="travel" className="w-full h-36 object-cover" />
+            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&h=200&fit=crop" alt="travel" className="w-full h-36 object-cover" loading="lazy" />
             <div className="p-4">
               <span className="text-blue-400 text-[10px] font-bold bg-blue-500/15 px-2 py-0.5 rounded">TRAVEL REWARDS</span>
               <h3 className="text-white font-bold text-base mt-2">Transfiere puntos DescluB a Volaris</h3>
@@ -531,7 +538,7 @@ export default function V3App() {
     <div className="h-full flex flex-col bg-black text-white relative overflow-hidden font-vc">
       <StatusBar variant="dark" />
       {/* Header */}
-      <div className="pt-safe-header md:pt-14 pb-2 px-5 flex items-center justify-between bg-black">
+      <div className="pt-safe md:pt-14 pb-2 px-5 flex items-center justify-between bg-black">
         <div className="flex items-center gap-1.5 bg-[#111] border border-[#1a1a1a] rounded-full px-3 py-1.5">
           <span className="text-blue-400 text-xs">👤</span>
           <span className="text-white text-xs font-bold">{points.toLocaleString()} pts</span>
@@ -625,7 +632,9 @@ export default function V3App() {
               </div>
             ) : (
               <>
-                <span className="text-lg">{tab.icon}</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={activeTab === tab.key ? '#fff' : '#555'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d={TAB_ICONS[tab.key]} />
+                </svg>
                 <span className={`text-[9px] font-semibold ${activeTab === tab.key ? 'text-white' : 'text-[#555]'}`}>{tab.label}</span>
               </>
             )}

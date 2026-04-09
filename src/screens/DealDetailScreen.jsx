@@ -7,8 +7,8 @@ export default function DealDetailScreen({ deal, saved, onToggleSave, onBack }) 
   return (
     <div className="h-full flex flex-col bg-white font-va">
       {/* Hero */}
-      <div className="h-56 relative shrink-0 overflow-hidden">
-        <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" />
+      <div className="h-48 md:h-56 relative shrink-0 overflow-hidden">
+        <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
 
         {/* Top buttons */}

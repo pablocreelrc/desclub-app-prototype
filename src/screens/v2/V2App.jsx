@@ -2,7 +2,7 @@ import { useState } from 'react'
 import V2Login from './V2Login'
 import StatusBar from '../../components/StatusBar'
 
-const TABS = ['Overview', 'Beneficios', 'Mi Cuenta', 'Soporte']
+const TABS = ['Inicio', 'Beneficios', 'Mi Cuenta', 'Soporte']
 
 const DEALS = [
   { id: 1, brand: 'Cinépolis', discount: '2x1', detail: 'Boletos Martes y Jueves', image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&h=300&fit=crop', cat: 'Entretenimiento', description: 'Compra 1 boleto y lleva el 2do GRATIS todos los martes y jueves. Aplica para todas las salas incluyendo IMAX, 4DX y Macro XE.', expiry: '15 días', redeemed: 342, terms: ['Válido martes y jueves', 'No acumulable con otras promociones', 'Presentar membresía DescluB vigente', 'Sujeto a disponibilidad'] },
@@ -32,7 +32,7 @@ function DealDetail({ deal, onBack }) {
     <div className="h-full flex flex-col bg-black relative font-vb">
       <StatusBar variant="dark" />
       <div className="h-64 relative shrink-0 overflow-hidden">
-        <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" />
+        <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />
         <button onClick={onBack} className="absolute top-[max(env(safe-area-inset-top,12px),12px)] md:top-14 left-5 w-10 h-10 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center text-white text-lg active:scale-90 transition-transform">←</button>
         <div className="absolute bottom-4 left-5">
@@ -107,7 +107,7 @@ function OverviewTab({ onDealClick, onShowCard }) {
       {/* Getting Started hero — like PGA "Golf, Rewarded" */}
       <div className="rounded-xl overflow-hidden mb-8">
         <div className="relative h-36">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=250&fit=crop" alt="hero" className="w-full h-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=250&fit=crop" alt="hero" className="w-full h-full object-cover" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20" />
           <div className="absolute bottom-4 left-4 right-4">
             <h3 className="text-white text-xl font-bold">Descuentos, Premiados</h3>
@@ -126,7 +126,7 @@ function OverviewTab({ onDealClick, onShowCard }) {
         ].map((item, i) => (
           <button key={i} onClick={item.onClick} className="rounded-xl overflow-hidden text-left active:opacity-80 transition-opacity">
             <div className="relative h-24">
-              <img src={item.image} alt="" className="w-full h-full object-cover" />
+              <img src={item.image} alt="" className="w-full h-full object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-black/50" />
             </div>
             <p className="text-white text-xs font-medium mt-2 leading-tight">{item.label}</p>
@@ -159,7 +159,7 @@ function OverviewTab({ onDealClick, onShowCard }) {
         {DEALS.slice(3, 6).map((deal) => (
           <button key={deal.id} onClick={() => onDealClick(deal)} className="w-full rounded-xl overflow-hidden text-left active:scale-[0.98] transition-transform">
             <div className="relative h-44">
-              <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" />
+              <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4">
                 <p className="text-white font-bold text-base">{deal.brand}</p>
@@ -201,7 +201,7 @@ function BenefitsTab({ onDealClick }) {
             className="w-full text-left active:opacity-80 transition-opacity"
           >
             <div className="relative h-36 rounded-xl overflow-hidden">
-              <img src={cat.image} alt={cat.title} className="w-full h-full object-cover" />
+              <img src={cat.image} alt={cat.title} className="w-full h-full object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
             </div>
             <div className="mt-2 flex items-start justify-between">
@@ -217,7 +217,7 @@ function BenefitsTab({ onDealClick }) {
             <div className="mt-3">
               {cat.deals.map(deal => (
                 <button key={deal.id} onClick={() => onDealClick(deal)} className="w-full flex items-center gap-3 py-3 border-b border-[#1a1a1a] text-left active:bg-[#111]">
-                  <img src={deal.image} alt={deal.brand} className="w-12 h-12 rounded-lg object-cover" />
+                  <img src={deal.image} alt={deal.brand} className="w-12 h-12 rounded-lg object-cover" loading="lazy" />
                   <div className="flex-1">
                     <p className="text-white text-sm font-semibold">{deal.brand}</p>
                     <p className="text-[#666] text-xs">{deal.detail}</p>
@@ -408,7 +408,7 @@ function SupportTab() {
 /* ─── Main V2App ─── */
 export default function V2App() {
   const [loggedIn, setLoggedIn] = useState(false)
-  const [activeTab, setActiveTab] = useState('Overview')
+  const [activeTab, setActiveTab] = useState('Inicio')
   const [selectedDeal, setSelectedDeal] = useState(null)
   const [showCard, setShowCard] = useState(false)
 
@@ -430,7 +430,7 @@ export default function V2App() {
       <StatusBar variant="dark" />
 
       {/* Header — PGA style: logo + welcome + membership card button */}
-      <div className="pt-safe-header md:pt-14 pb-3 px-5 bg-[#0a0f1a]">
+      <div className="pt-safe md:pt-14 pb-3 px-5 bg-[#0a0f1a]">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-[#1a2744] rounded-md flex items-center justify-center">
@@ -464,7 +464,7 @@ export default function V2App() {
 
       {/* Content */}
       <div className="flex-1 overflow-y-auto pt-6">
-        {activeTab === 'Overview' && <OverviewTab onDealClick={setSelectedDeal} onShowCard={() => setShowCard(true)} />}
+        {activeTab === 'Inicio' && <OverviewTab onDealClick={setSelectedDeal} onShowCard={() => setShowCard(true)} />}
         {activeTab === 'Beneficios' && <BenefitsTab onDealClick={setSelectedDeal} />}
         {activeTab === 'Mi Cuenta' && <AccountTab onLogout={() => setLoggedIn(false)} />}
         {activeTab === 'Soporte' && <SupportTab />}
