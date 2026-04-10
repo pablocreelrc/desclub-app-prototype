@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import V2Login from './V2Login'
+import Onboarding from '../../components/Onboarding'
+import RedemptionFlow from '../../components/RedemptionFlow'
+import SearchBar from '../../components/SearchBar'
 import StatusBar from '../../components/StatusBar'
 
 const TABS = ['Inicio', 'Beneficios', 'Mi Cuenta', 'Soporte']
@@ -73,26 +76,13 @@ function DealDetail({ deal, onBack }) {
         </div>
       </div>
 
-      {showQR && (
-        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowQR(false)}>
-          <div className="bg-[#111] rounded-3xl p-8 mx-6 text-center border border-[#222]" onClick={e => e.stopPropagation()}>
-            <h2 className="text-xl font-bold text-white mb-1">{deal.brand}</h2>
-            <p className="text-sm text-[#888] mb-5">{deal.discount}</p>
-            <div className="w-44 h-44 mx-auto bg-white rounded-2xl flex items-center justify-center mb-4">
-              <div className="grid grid-cols-7 gap-[2px] p-3">
-                {Array.from({ length: 49 }).map((_, i) => (
-                  <div key={i} className={`w-3.5 h-3.5 rounded-sm ${[0,1,2,5,6,7,13,14,20,21,27,28,35,42,43,44,47,48,10,11,16,17,31,32,37,38].includes(i) ? 'bg-gray-900' : 'bg-gray-100'}`} />
-                ))}
-              </div>
-            </div>
-            <p className="text-xs text-[#666] font-mono">5114 1102 5020 1775</p>
-            <button onClick={() => setShowQR(false)} className="mt-5 w-full h-11 border border-[#333] rounded-xl text-white text-sm font-semibold active:bg-[#222]">Cerrar</button>
-          </div>
-        </div>
-      )}
+      {showQR && <RedemptionFlow deal={deal} variant="dark" onClose={() => setShowQR(false)} />}
 
-      <div className="absolute bottom-0 left-0 right-0 bg-black/90 backdrop-blur-lg border-t border-[#222] px-5 pt-3" style={{ paddingBottom: 'calc(2rem + env(safe-area-inset-bottom, 0px))' }}>
-        <button onClick={() => setShowQR(true)} className="w-full h-[52px] bg-white text-black rounded-xl flex items-center justify-center font-bold text-[17px] active:scale-[0.97] transition-transform">
+      <div className="absolute bottom-0 left-0 right-0 bg-black/90 backdrop-blur-lg border-t border-[#222] px-5 pt-3 flex gap-2" style={{ paddingBottom: 'calc(2rem + env(safe-area-inset-bottom, 0px))' }}>
+        <button onClick={() => window.open(`https://wa.me/?text=${encodeURIComponent(`${deal.brand}: ${deal.discount} - ${deal.detail}. Descarga DescluB: desclub.com.mx`)}`, '_blank')} className="w-12 h-[52px] bg-[#25D366] rounded-xl flex items-center justify-center active:scale-95 transition-transform shrink-0">
+          <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+        </button>
+        <button onClick={() => setShowQR(true)} className="flex-1 h-[52px] bg-white text-black rounded-xl flex items-center justify-center font-bold text-[17px] active:scale-[0.97] transition-transform">
           Canjear descuento
         </button>
       </div>
@@ -411,16 +401,25 @@ function SupportTab() {
 
 /* ─── Main V2App ─── */
 export default function V2App() {
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [screen, setScreen] = useState('login')
   const [activeTab, setActiveTab] = useState('Inicio')
   const [selectedDeal, setSelectedDeal] = useState(null)
   const [showCard, setShowCard] = useState(false)
 
-  if (!loggedIn) {
+  if (screen === 'login') {
     return (
       <div className="flex-1 min-h-0 flex flex-col relative">
         <StatusBar variant="dark" />
-        <V2Login onLogin={() => setLoggedIn(true)} />
+        <V2Login onLogin={() => setScreen('onboarding')} />
+      </div>
+    )
+  }
+
+  if (screen === 'onboarding') {
+    return (
+      <div className="flex-1 min-h-0 flex flex-col relative">
+        <StatusBar variant="dark" />
+        <Onboarding variant="dark" onComplete={() => setScreen('app')} />
       </div>
     )
   }
@@ -445,10 +444,14 @@ export default function V2App() {
               <p className="text-white text-lg font-black tracking-tight leading-none font-vb-display italic">PASS</p>
             </div>
           </div>
-          <button onClick={() => setLoggedIn(false)} className="w-7 h-7 rounded-full border border-[#444] flex items-center justify-center text-[#888] text-xs active:bg-[#222]">✕</button>
+          <button onClick={() => setScreen('login')} className="w-7 h-7 rounded-full border border-[#444] flex items-center justify-center text-[#888] text-xs active:bg-[#222]">✕</button>
         </div>
 
         <p className="text-white text-lg font-bold mb-3">Bienvenido, Pablo</p>
+
+        <div className="mb-3">
+          <SearchBar deals={DEALS} onDealClick={setSelectedDeal} variant="dark" />
+        </div>
 
         <button onClick={() => setShowCard(true)} className="w-full border border-[#444] rounded-lg py-3 text-center text-white text-sm font-medium flex items-center justify-center gap-2 active:bg-[#111]">
           <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg> Tarjeta de Membresía
@@ -470,7 +473,7 @@ export default function V2App() {
       <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain pt-6">
         {activeTab === 'Inicio' && <OverviewTab onDealClick={setSelectedDeal} onShowCard={() => setShowCard(true)} />}
         {activeTab === 'Beneficios' && <BenefitsTab onDealClick={setSelectedDeal} />}
-        {activeTab === 'Mi Cuenta' && <AccountTab onLogout={() => setLoggedIn(false)} />}
+        {activeTab === 'Mi Cuenta' && <AccountTab onLogout={() => setScreen('login')} />}
         {activeTab === 'Soporte' && <SupportTab />}
       </div>
 

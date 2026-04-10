@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import RedemptionFlow from '../components/RedemptionFlow'
 
 export default function DealDetailScreen({ deal, saved, onToggleSave, onBack }) {
   const [showQR, setShowQR] = useState(false)
@@ -91,31 +92,8 @@ export default function DealDetailScreen({ deal, saved, onToggleSave, onBack }) 
         </div>
       </div>
 
-      {/* QR Modal */}
-      {showQR && (
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowQR(false)}>
-          <div className="bg-white rounded-3xl p-6 mx-5 text-center shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <p className="text-[11px] text-text-secondary mb-1">Tu descuento</p>
-            <h2 className="text-[18px] font-bold text-text-primary mb-1">{deal.brand}</h2>
-            <p className="text-accent-500 font-bold text-[15px] mb-5">{deal.discount}</p>
-            <div className="w-44 h-44 mx-auto bg-gray-50 rounded-xl flex items-center justify-center mb-4 border-2 border-dashed border-gray-200">
-              <div className="grid grid-cols-7 gap-[2px] p-3">
-                {Array.from({ length: 49 }).map((_, i) => (
-                  <div key={i} className={`w-3 h-3 rounded-sm ${
-                    [0,1,2,3,4,5,6,7,13,14,20,21,27,28,34,35,42,43,44,45,46,47,48,9,10,11,16,17,18,30,31,32,37,38,39].includes(i)
-                      ? 'bg-gray-900' : 'bg-white'
-                  }`} />
-                ))}
-              </div>
-            </div>
-            <p className="text-[12px] text-text-secondary font-mono mb-1">5114 1102 5020 1775</p>
-            <p className="text-[11px] text-gray-400 mb-4">Presenta en el establecimiento</p>
-            <button onClick={() => setShowQR(false)} className="w-full h-11 bg-gray-100 rounded-xl text-text-primary font-semibold text-[14px] active:bg-gray-200">
-              Cerrar
-            </button>
-          </div>
-        </div>
-      )}
+      {/* Redemption Flow */}
+      {showQR && <RedemptionFlow deal={deal} variant="light" onClose={() => setShowQR(false)} />}
 
       {/* CTA */}
       <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-gray-100 px-4 pt-3 flex gap-2.5" style={{ paddingBottom: 'max(1rem, calc(1rem + env(safe-area-inset-bottom, 0px)))' }}>

@@ -1,5 +1,9 @@
 import { useState } from 'react'
 import V3Login from './V3Login'
+import Onboarding from '../../components/Onboarding'
+import RedemptionFlow from '../../components/RedemptionFlow'
+import SearchBar from '../../components/SearchBar'
+import NotificationsPanel from '../../components/NotificationsPanel'
 import StatusBar from '../../components/StatusBar'
 
 const DEALS = [
@@ -103,28 +107,14 @@ function DealDetail({ deal, onBack }) {
         </div>
       </div>
 
-      {/* QR Modal */}
-      {showQR && (
-        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowQR(false)}>
-          <div className="bg-[#111] rounded-3xl p-8 mx-6 text-center border border-[#2a2a3a]" onClick={e => e.stopPropagation()}>
-            <h2 className="text-xl font-bold text-white mt-3 mb-1">{deal.brand}</h2>
-            <p className="text-sm text-[#888] mb-5">{deal.discount}</p>
-            <div className="w-44 h-44 mx-auto bg-white rounded-2xl flex items-center justify-center mb-4">
-              <div className="grid grid-cols-7 gap-[2px] p-3">
-                {Array.from({ length: 49 }).map((_, i) => (
-                  <div key={i} className={`w-3.5 h-3.5 rounded-sm ${[0,1,2,5,6,7,13,14,20,21,27,28,35,42,43,44,47,48,10,11,16,17,31,32,37,38].includes(i) ? 'bg-gray-900' : 'bg-gray-100'}`} />
-                ))}
-              </div>
-            </div>
-            <p className="text-xs text-[#666] font-mono">5114 1102 5020 1775</p>
-            <p className="text-[10px] text-blue-400 mt-1">+{deal.points} puntos al canjear</p>
-            <button onClick={() => setShowQR(false)} className="mt-5 w-full h-11 bg-[#1a1a1a] rounded-xl text-white text-sm font-semibold">Cerrar</button>
-          </div>
-        </div>
-      )}
+      {/* Redemption Flow */}
+      {showQR && <RedemptionFlow deal={deal} variant="dark" onClose={() => setShowQR(false)} />}
 
       {/* CTA bar */}
-      <div className="absolute bottom-0 left-0 right-0 bg-black/90 backdrop-blur-lg border-t border-[#1a1a25] px-5 pt-3 flex gap-3" style={{ paddingBottom: 'calc(2rem + env(safe-area-inset-bottom, 0px))' }}>
+      <div className="absolute bottom-0 left-0 right-0 bg-black/90 backdrop-blur-lg border-t border-[#1a1a25] px-5 pt-3 flex gap-2" style={{ paddingBottom: 'calc(2rem + env(safe-area-inset-bottom, 0px))' }}>
+        <button onClick={() => window.open(`https://wa.me/?text=${encodeURIComponent(`${deal.brand}: ${deal.discount} - ${deal.detail}. Descarga DescluB: desclub.com.mx`)}`, '_blank')} className="w-12 h-[52px] bg-[#25D366] rounded-2xl flex items-center justify-center active:scale-95 transition-transform shrink-0">
+          <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+        </button>
         <button
           onClick={() => setShowQR(true)}
           className="flex-1 h-[52px] bg-white text-black rounded-2xl flex items-center justify-center font-bold text-[17px] active:scale-[0.97] transition-transform"
@@ -160,6 +150,11 @@ function ExploreTab({ onDealClick, onCategoryClick }) {
       </div>
 
       <div className="px-5 pt-5">
+        {/* Search */}
+        <div className="mb-4">
+          <SearchBar deals={DEALS} onDealClick={onDealClick} variant="dark" />
+        </div>
+
         {/* Welcome */}
         <div className="flex items-center gap-3 mb-5">
           <div className="w-12 h-12 rounded-xl bg-[#111] border border-[#1a1a1a] flex items-center justify-center text-white text-sm font-bold">PC</div>
@@ -186,8 +181,29 @@ function ExploreTab({ onDealClick, onCategoryClick }) {
           ))}
         </div>
 
+        {/* Expiring soon */}
+        <div className="flex items-center justify-between mb-1">
+          <h3 className="text-white text-lg font-bold">Termina pronto</h3>
+          <span className="text-red-400 text-[10px] font-bold bg-red-500/10 px-2 py-0.5 rounded-full">En vivo</span>
+        </div>
+        <div className="w-12 h-0.5 bg-red-500 mb-3" />
+        <div className="flex gap-3 overflow-x-auto no-scrollbar -mx-5 px-5 mb-8">
+          {DEALS.filter(d => parseInt(d.expiry) <= 12).slice(0, 3).map(deal => (
+            <button key={`exp-${deal.id}`} onClick={() => onDealClick(deal)} className="shrink-0 w-[140px] bg-[#111] border border-[#1a1a1a] rounded-2xl overflow-hidden active:scale-[0.97] transition-transform">
+              <div className="h-20 relative">
+                <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" loading="lazy" />
+                <span className="absolute top-1.5 right-1.5 bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md">{deal.expiry}</span>
+              </div>
+              <div className="p-2.5">
+                <p className="text-white text-xs font-semibold truncate">{deal.brand}</p>
+                <p className="text-blue-400 text-[11px] font-bold">{deal.discount}</p>
+              </div>
+            </button>
+          ))}
+        </div>
+
         {/* Picks for you */}
-        <h3 className="text-white text-lg font-bold mb-1">Selección para ti</h3>
+        <h3 className="text-white text-lg font-bold mb-1">Para ti</h3>
         <div className="w-12 h-0.5 bg-blue-500 mb-3" />
         {DEALS.slice(0, 2).map((deal) => (
           <button key={deal.id} onClick={() => onDealClick(deal)} className="w-full bg-[#111] border border-[#1a1a1a] rounded-2xl mb-3 overflow-hidden text-left active:scale-[0.98] transition-transform">
@@ -515,19 +531,29 @@ function WalletTab() {
 }
 
 export default function V3App() {
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [screen, setScreen] = useState('login')
   const [activeTab, setActiveTab] = useState('explore')
   const [selectedDeal, setSelectedDeal] = useState(null)
   const [showQRCard, setShowQRCard] = useState(false)
   const [showAccount, setShowAccount] = useState(false)
+  const [showNotifications, setShowNotifications] = useState(false)
   const [dealsCatFilter, setDealsCatFilter] = useState(null)
   const points = 1250
 
-  if (!loggedIn) {
+  if (screen === 'login') {
     return (
       <div className="flex-1 min-h-0 flex flex-col relative">
         <StatusBar variant="dark" />
-        <V3Login onLogin={() => setLoggedIn(true)} />
+        <V3Login onLogin={() => setScreen('onboarding')} />
+      </div>
+    )
+  }
+
+  if (screen === 'onboarding') {
+    return (
+      <div className="flex-1 min-h-0 flex flex-col relative">
+        <StatusBar variant="dark" />
+        <Onboarding variant="dark" onComplete={() => setScreen('app')} />
       </div>
     )
   }
@@ -541,19 +567,32 @@ export default function V3App() {
     <div className="flex-1 min-h-0 flex flex-col bg-black text-white relative overflow-hidden font-vc">
       <StatusBar variant="dark" />
       {/* Header */}
-      <div className="pt-safe md:pt-14 pb-2 px-5 flex items-center justify-between bg-black">
-        <div className="flex items-center gap-1.5 bg-[#111] border border-[#1a1a1a] rounded-full px-3 py-1.5">
-          <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-blue-400" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8"/></svg>
-          <span className="text-white text-xs font-bold">{points.toLocaleString()} pts</span>
+      <div className="pt-safe md:pt-14 pb-2 px-5 bg-black">
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center gap-1.5 bg-[#111] border border-[#1a1a1a] rounded-full px-3 py-1.5">
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-blue-400" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8"/></svg>
+            <span className="text-white text-xs font-bold">{points.toLocaleString()} pts</span>
+            <span className="text-[#555] text-[10px]">= ${Math.floor(points / 10)} MXN</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <button onClick={() => setShowNotifications(true)} className="w-9 h-9 bg-[#111] border border-[#1a1a1a] rounded-full flex items-center justify-center text-white text-sm relative">
+              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0 1 18 14.158V11a6.002 6.002 0 0 0-4-5.659V5a2 2 0 1 0-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 1 1-6 0v-1m6 0H9"/></svg>
+              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-red-500 rounded-full text-[9px] font-bold text-white flex items-center justify-center">2</span>
+            </button>
+            <button onClick={() => setShowAccount(true)} className="w-9 h-9 bg-[#111] border border-[#1a1a1a] rounded-full flex items-center justify-center text-[#888] text-sm">
+              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8"/></svg>
+            </button>
+          </div>
         </div>
+        {/* Tier progress bar */}
         <div className="flex items-center gap-2">
-          <button className="w-9 h-9 bg-[#111] border border-[#1a1a1a] rounded-full flex items-center justify-center text-white text-sm">
-            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0 1 18 14.158V11a6.002 6.002 0 0 0-4-5.659V5a2 2 0 1 0-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 1 1-6 0v-1m6 0H9"/></svg>
-          </button>
-          <button onClick={() => setShowAccount(true)} className="w-9 h-9 bg-[#111] border border-[#1a1a1a] rounded-full flex items-center justify-center text-[#888] text-sm">
-            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8"/></svg>
-          </button>
+          <span className="text-blue-400 text-[10px] font-bold">Gold</span>
+          <div className="flex-1 h-1.5 bg-[#1a1a1a] rounded-full overflow-hidden">
+            <div className="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full" style={{ width: '62%' }} />
+          </div>
+          <span className="text-[#555] text-[10px]">Platinum</span>
         </div>
+        <p className="text-[10px] text-[#444] mt-0.5">750 pts más para subir de nivel</p>
       </div>
 
       {/* Content */}
@@ -583,6 +622,9 @@ export default function V3App() {
           </div>
         </div>
       )}
+
+      {/* Notifications Panel */}
+      {showNotifications && <NotificationsPanel onClose={() => setShowNotifications(false)} />}
 
       {/* Account Modal */}
       {showAccount && (
@@ -620,7 +662,7 @@ export default function V3App() {
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg> Soporte vía WhatsApp
             </button>
             <button
-              onClick={() => { setShowAccount(false); setLoggedIn(false) }}
+              onClick={() => { setShowAccount(false); setScreen('login') }}
               className="w-full mt-3 py-4 text-red-400 text-sm font-semibold text-center"
             >
               Cerrar sesión

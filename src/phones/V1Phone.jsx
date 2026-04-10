@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Onboarding from '../components/Onboarding'
 import LoginScreen from '../screens/LoginScreen'
 import HomeScreen from '../screens/HomeScreen'
 import DealDetailScreen from '../screens/DealDetailScreen'
@@ -21,6 +22,7 @@ const DEALS = [
 
 export default function V1Phone() {
   const [screen, setScreen] = useState('login')
+  const [showOnboarding, setShowOnboarding] = useState(true)
   const [tab, setTab] = useState('home')
   const [selectedDeal, setSelectedDeal] = useState(null)
   const [savedDeals, setSavedDeals] = useState([])
@@ -34,7 +36,18 @@ export default function V1Phone() {
       <div className="h-full flex flex-col bg-white relative overflow-hidden font-va">
         <StatusBar variant="light" />
         <div className="flex-1 min-h-0 flex flex-col">
-          <LoginScreen onLogin={() => { setScreen('app'); setTab('home'); }} />
+          <LoginScreen onLogin={() => { setScreen('onboarding'); }} />
+        </div>
+      </div>
+    )
+  }
+
+  if (screen === 'onboarding') {
+    return (
+      <div className="h-full flex flex-col bg-white relative overflow-hidden font-va">
+        <StatusBar variant="light" />
+        <div className="flex-1 min-h-0 flex flex-col">
+          <Onboarding variant="light" onComplete={() => { setScreen('app'); setTab('home'); }} />
         </div>
       </div>
     )
