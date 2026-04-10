@@ -34,7 +34,7 @@ function DealDetail({ deal, onBack }) {
   if (!deal) return null
 
   return (
-    <div className="h-full flex flex-col bg-black relative">
+    <div className="flex-1 min-h-0 flex flex-col bg-black relative">
       <StatusBar variant="dark" />
       {/* Hero image */}
       <div className="h-64 relative shrink-0 overflow-hidden">
@@ -139,12 +139,12 @@ function DealDetail({ deal, onBack }) {
 
 function ExploreTab({ onDealClick }) {
   const categories = [
-    { icon: '•', label: 'Comida' },
-    { icon: '•', label: 'Cine' },
-    { icon: '•', label: 'Fitness' },
-    { icon: '🎭', label: 'Experiencias' },
-    { icon: '•', label: 'Retail' },
-    { icon: '•', label: 'Viajes' },
+    { path: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z', label: 'Comida' },
+    { path: 'M19 2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 12 12 12s-3.5-1.57-3.5-3.5S10.07 5 12 5zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V18z', label: 'Cine' },
+    { path: 'M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29l-1.43-1.43z', label: 'Fitness' },
+    { path: 'M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z', label: 'Experiencias' },
+    { path: 'M21 8H7V6H21M21 16H7v-2H21M21 12H7v-2H21M3 8V6H1v2H3M3 16V14H1v2H3M3 12V10H1v2H3', label: 'Retail' },
+    { path: 'M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z', label: 'Viajes' },
   ]
   return (
     <div className="pb-6">
@@ -153,7 +153,7 @@ function ExploreTab({ onDealClick }) {
         <div className="absolute inset-0 opacity-20" style={{ background: 'url("https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&h=200&fit=crop") center/cover' }} />
         <div className="relative z-10 flex items-center justify-between w-full">
           <div className="flex items-center gap-2">
-            <span className="text-blue-400 text-sm font-bold">📍</span>
+            <svg viewBox="0 0 24 24" className="w-4 h-4 text-blue-400" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             <span className="text-white text-sm font-semibold">CDMX</span>
             <span className="text-[#555] text-xs">• {DEALS.length} ofertas cerca</span>
           </div>
@@ -167,7 +167,7 @@ function ExploreTab({ onDealClick }) {
           <div>
             <p className="text-white text-base font-bold">Bienvenido, Pablo</p>
             <div className="flex items-center gap-2">
-              <span className="text-blue-400 text-xs font-semibold">🟢 Gold</span>
+              <span className="text-blue-400 text-xs font-semibold">Gold</span>
               <span className="text-[#555] text-xs">• Miembro desde '24</span>
             </div>
           </div>
@@ -179,7 +179,9 @@ function ExploreTab({ onDealClick }) {
         <div className="grid grid-cols-3 gap-2 mb-6">
           {categories.map((c) => (
             <button key={c.label} className="bg-[#111] border border-[#1a1a1a] rounded-xl py-3.5 text-center active:bg-[#1a1a1a] transition-colors">
-              <span className="text-xl">{c.icon}</span>
+              <svg viewBox="0 0 24 24" className="w-5 h-5 text-blue-400 mx-auto" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                <path d={c.path} />
+              </svg>
               <p className="text-white text-xs font-medium mt-1">{c.label}</p>
             </button>
           ))}
@@ -522,7 +524,7 @@ export default function V3App() {
 
   if (!loggedIn) {
     return (
-      <div className="h-full relative">
+      <div className="flex-1 min-h-0 flex flex-col relative">
         <StatusBar variant="dark" />
         <V3Login onLogin={() => setLoggedIn(true)} />
       </div>
@@ -535,7 +537,7 @@ export default function V3App() {
   }
 
   return (
-    <div className="h-full flex flex-col bg-black text-white relative overflow-hidden font-vc">
+    <div className="flex-1 min-h-0 flex flex-col bg-black text-white relative overflow-hidden font-vc">
       <StatusBar variant="dark" />
       {/* Header */}
       <div className="pt-safe md:pt-14 pb-2 px-5 flex items-center justify-between bg-black">
@@ -550,7 +552,7 @@ export default function V3App() {
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto overflow-x-hidden">
+      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain">
         {activeTab === 'explore' && <ExploreTab onDealClick={setSelectedDeal} />}
         {activeTab === 'deals' && <DealsTab onDealClick={setSelectedDeal} />}
         {activeTab === 'rewards' && <RewardsTab onDealClick={setSelectedDeal} />}
