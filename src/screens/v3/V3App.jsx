@@ -213,7 +213,7 @@ function ExploreTab({ onDealClick }) {
         <button onClick={() => onDealClick(DEALS[3])} className="w-full bg-[#111] border border-[#1a1a1a] rounded-2xl overflow-hidden text-left active:scale-[0.98] transition-transform mb-3">
           <div className="relative">
             <img src={DEALS[3].image} alt="Sport City" className="w-full h-28 object-cover" loading="lazy" />
-            <div className="absolute top-2 right-2 bg-black/50 backdrop-blur text-white text-[10px] font-semibold px-2 py-0.5 rounded-full">⏰ Termina en 15d 22h</div>
+            <div className="absolute top-2 right-2 bg-black/50 backdrop-blur text-white text-[10px] font-semibold px-2 py-0.5 rounded-full flex items-center gap-0.5"><svg className="w-2.5 h-2.5 inline-block" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.2 3.1.8-1.3-4.5-2.7V7z"/></svg> Termina en 15d 22h</div>
           </div>
           <div className="p-4">
             <p className="text-white font-bold text-sm">Sport City — 3 días GRATIS</p>
@@ -291,7 +291,7 @@ function DealsTab({ onDealClick }) {
             </div>
             <div className="p-3 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                {deal.dist && <span className="text-[#888] text-xs">📍 {deal.dist}</span>}
+                {deal.dist && <span className="text-[#888] text-xs flex items-center gap-0.5"><svg className="w-3 h-3 inline-block" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> {deal.dist}</span>}
                 <span className="text-[#555] text-xs">{deal.cat}</span>
               </div>
               <span className="text-blue-400 text-xs font-bold">{deal.points} pts</span>
@@ -302,7 +302,7 @@ function DealsTab({ onDealClick }) {
 
       {filtered.length === 0 && (
         <div className="text-center py-12 text-[#555]">
-          <p className="text-4xl mb-3">🔍</p>
+          <div className="flex justify-center mb-3"><svg className="w-10 h-10 text-[#555]" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
           <p className="font-medium text-white">No hay ofertas en esta categoría</p>
           <p className="text-sm mt-1">Prueba otra categoría</p>
         </div>
@@ -326,15 +326,15 @@ function MyAccountTab() {
         </div>
         <div className="mt-4 space-y-3">
           <button className="w-full flex items-center justify-between py-3 border-b border-[#2a2a3a]">
-            <div className="flex items-center gap-3"><span className="text-sm">🕐</span><span className="text-white text-sm font-semibold">Historial de canjes</span></div>
+            <div className="flex items-center gap-3"><svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.2 3.1.8-1.3-4.5-2.7V7z"/></svg><span className="text-white text-sm font-semibold">Historial de canjes</span></div>
             <span className="text-[#444]">›</span>
           </button>
           <button className="w-full flex items-center justify-between py-3 border-b border-[#2a2a3a]">
-            <div className="flex items-center gap-3"><span className="text-sm">🔔</span><span className="text-white text-sm font-semibold">Alertas de ofertas</span></div>
+            <div className="flex items-center gap-3"><svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg><span className="text-white text-sm font-semibold">Alertas de ofertas</span></div>
             <span className="text-blue-400 text-xs font-semibold">On</span>
           </button>
           <button className="w-full flex items-center justify-between py-3">
-            <div className="flex items-center gap-3"><span className="text-sm">⭐</span><span className="text-white text-sm font-semibold">Pagar con puntos</span></div>
+            <div className="flex items-center gap-3"><svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><span className="text-white text-sm font-semibold">Pagar con puntos</span></div>
             <span className="text-[#888] text-xs bg-[#1a1a1a] px-2 py-0.5 rounded">Gana 1,000 pts mínimo</span>
           </button>
         </div>
@@ -362,7 +362,7 @@ function MyAccountTab() {
         onClick={() => window.open('https://wa.me/525500000000', '_blank')}
         className="w-full h-12 bg-[#25D366]/15 border border-[#25D366]/30 rounded-2xl text-[#25D366] text-sm font-semibold flex items-center justify-center gap-2 mt-6 active:bg-[#25D366]/25"
       >
-        💬 Soporte vía WhatsApp
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg> Soporte vía WhatsApp
       </button>
     </div>
   )
@@ -615,7 +615,7 @@ export default function V3App() {
               onClick={() => window.open('https://wa.me/525500000000', '_blank')}
               className="w-full h-12 bg-[#25D366]/15 border border-[#25D366]/30 rounded-xl text-[#25D366] text-sm font-semibold flex items-center justify-center gap-2 mt-5"
             >
-              💬 Soporte vía WhatsApp
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg> Soporte vía WhatsApp
             </button>
             <button
               onClick={() => { setShowAccount(false); setLoggedIn(false) }}
