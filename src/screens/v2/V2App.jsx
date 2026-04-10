@@ -141,7 +141,7 @@ function OverviewTab({ onDealClick, onShowCard }) {
       <div className="space-y-0">
         {DEALS.filter(d => d.detail).slice(0, 3).map((deal) => (
           <button key={deal.id} onClick={() => onDealClick(deal)} className="w-full flex items-center gap-4 py-4 border-b border-[#1a1a1a] text-left active:bg-[#111] transition-colors">
-            <img src={deal.image} alt={deal.brand} className="w-16 h-16 rounded-lg object-cover shrink-0" />
+            <img src={deal.image} alt={deal.brand} className="w-16 h-16 rounded-lg object-cover shrink-0" loading="lazy" />
             <div className="flex-1 min-w-0">
               <p className="text-white text-sm font-bold">{deal.brand}</p>
               <p className="text-[#888] text-xs mt-0.5">{deal.detail}</p>
