@@ -29,7 +29,7 @@ function DealDetail({ deal, onBack }) {
   if (!deal) return null
 
   return (
-    <div className="h-full flex flex-col bg-black relative font-vb">
+    <div className="flex-1 min-h-0 flex flex-col bg-black relative font-vb">
       <StatusBar variant="dark" />
       <div className="h-64 relative shrink-0 overflow-hidden">
         <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" loading="lazy" />
@@ -414,7 +414,7 @@ export default function V2App() {
 
   if (!loggedIn) {
     return (
-      <div className="h-full relative">
+      <div className="flex-1 min-h-0 flex flex-col relative">
         <StatusBar variant="dark" />
         <V2Login onLogin={() => setLoggedIn(true)} />
       </div>
@@ -426,7 +426,7 @@ export default function V2App() {
   }
 
   return (
-    <div className="h-full flex flex-col bg-black text-white relative font-vb">
+    <div className="flex-1 min-h-0 flex flex-col bg-black text-white relative font-vb">
       <StatusBar variant="dark" />
 
       {/* Header — PGA style: logo + welcome + membership card button */}
@@ -463,7 +463,7 @@ export default function V2App() {
       <div className="w-full h-px bg-[#222]" />
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto pt-6">
+      <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain pt-6">
         {activeTab === 'Inicio' && <OverviewTab onDealClick={setSelectedDeal} onShowCard={() => setShowCard(true)} />}
         {activeTab === 'Beneficios' && <BenefitsTab onDealClick={setSelectedDeal} />}
         {activeTab === 'Mi Cuenta' && <AccountTab onLogout={() => setLoggedIn(false)} />}
