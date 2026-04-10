@@ -47,7 +47,7 @@ export default function Onboarding({ onComplete, variant = 'light' }) {
     </div>,
 
     // Step 2: Location
-    <div key="loc" className="flex-1 flex flex-col items-center justify-center px-8 text-center">
+    <div key="loc" className="flex-1 flex flex-col items-center justify-center px-8 text-center" style={{ paddingBottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}>
       <div className={`w-20 h-20 rounded-full ${isDark ? 'bg-blue-500/15' : 'bg-blue-50'} flex items-center justify-center mb-6`}>
         <svg className="w-10 h-10 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
@@ -66,7 +66,7 @@ export default function Onboarding({ onComplete, variant = 'light' }) {
     </div>,
 
     // Step 3: Welcome bonus
-    <div key="bonus" className="flex-1 flex flex-col items-center justify-center px-8 text-center">
+    <div key="bonus" className="flex-1 flex flex-col items-center justify-center px-8 text-center" style={{ paddingBottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}>
       <div className={`w-24 h-24 rounded-full ${isDark ? 'bg-green-500/15' : 'bg-green-50'} flex items-center justify-center mb-6`}>
         <svg className="w-12 h-12 text-green-500" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />

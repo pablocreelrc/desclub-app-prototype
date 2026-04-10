@@ -22,7 +22,6 @@ const DEALS = [
 
 export default function V1Phone() {
   const [screen, setScreen] = useState('login')
-  const [showOnboarding, setShowOnboarding] = useState(true)
   const [tab, setTab] = useState('home')
   const [selectedDeal, setSelectedDeal] = useState(null)
   const [savedDeals, setSavedDeals] = useState([])
