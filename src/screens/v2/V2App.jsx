@@ -447,7 +447,7 @@ export default function V2App() {
         <p className="text-white text-lg font-bold mb-3">Bienvenido, Pablo</p>
 
         <button onClick={() => setShowCard(true)} className="w-full border border-[#444] rounded-lg py-3 text-center text-white text-sm font-medium flex items-center justify-center gap-2 active:bg-[#111]">
-          <span className="text-sm">📋</span> Tarjeta de Membresía
+          <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg> Tarjeta de Membresía
         </button>
       </div>
 

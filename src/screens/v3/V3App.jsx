@@ -62,21 +62,21 @@ function DealDetail({ deal, onBack }) {
         {/* Meta chips */}
         <div className="flex gap-2 mt-5 flex-wrap">
           <span className="bg-red-500/15 text-red-400 text-xs font-semibold px-3.5 py-2 rounded-xl">
-            ⏰ Vence en {deal.expiry}
+            Vence en {deal.expiry}
           </span>
           <span className="bg-blue-500/15 text-blue-400 text-xs font-semibold px-3.5 py-2 rounded-xl">
-            👥 {deal.redeemed.toLocaleString()} canjearon
+            {deal.redeemed.toLocaleString()} canjearon
           </span>
           {deal.redeemed > 200 && (
             <span className="bg-orange-500/15 text-orange-400 text-xs font-semibold px-3.5 py-2 rounded-xl">
-              🔥 Popular
+              Popular
             </span>
           )}
         </div>
 
         {/* How to redeem */}
         <div className="bg-blue-500/10 rounded-2xl p-4 mt-6 border border-blue-500/20">
-          <h3 className="font-semibold text-sm text-blue-400 mb-2">🎯 Cómo canjear</h3>
+          <h3 className="font-semibold text-sm text-blue-400 mb-2">Cómo canjear</h3>
           <div className="flex gap-3">
             {['Muestra tu QR', 'El comercio lo escanea', 'Gana puntos extras'].map((step, i) => (
               <div key={i} className="flex-1 text-center">
@@ -91,7 +91,7 @@ function DealDetail({ deal, onBack }) {
 
         {/* Terms */}
         <div className="bg-[#111] rounded-2xl p-4 mt-4 border border-[#2a2a3a]">
-          <h3 className="font-semibold text-sm text-white mb-2">📋 Términos y condiciones</h3>
+          <h3 className="font-semibold text-sm text-white mb-2">Términos y condiciones</h3>
           <ul className="space-y-1.5">
             {deal.terms.map((t, i) => (
               <li key={i} className="text-[13px] text-[#888] flex items-start gap-2">
@@ -107,7 +107,6 @@ function DealDetail({ deal, onBack }) {
       {showQR && (
         <div className="absolute inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowQR(false)}>
           <div className="bg-[#111] rounded-3xl p-8 mx-6 text-center border border-[#2a2a3a]" onClick={e => e.stopPropagation()}>
-            <span className="text-3xl">✅</span>
             <h2 className="text-xl font-bold text-white mt-3 mb-1">{deal.brand}</h2>
             <p className="text-sm text-[#888] mb-5">{deal.discount}</p>
             <div className="w-44 h-44 mx-auto bg-white rounded-2xl flex items-center justify-center mb-4">
@@ -542,12 +541,16 @@ export default function V3App() {
       {/* Header */}
       <div className="pt-safe md:pt-14 pb-2 px-5 flex items-center justify-between bg-black">
         <div className="flex items-center gap-1.5 bg-[#111] border border-[#1a1a1a] rounded-full px-3 py-1.5">
-          <span className="text-blue-400 text-xs">👤</span>
+          <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-blue-400" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8"/></svg>
           <span className="text-white text-xs font-bold">{points.toLocaleString()} pts</span>
         </div>
         <div className="flex items-center gap-2">
-          <button className="w-9 h-9 bg-[#111] border border-[#1a1a1a] rounded-full flex items-center justify-center text-white text-sm">🔔</button>
-          <button onClick={() => setShowAccount(true)} className="w-9 h-9 bg-[#111] border border-[#1a1a1a] rounded-full flex items-center justify-center text-[#888] text-sm">👤</button>
+          <button className="w-9 h-9 bg-[#111] border border-[#1a1a1a] rounded-full flex items-center justify-center text-white text-sm">
+            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0 1 18 14.158V11a6.002 6.002 0 0 0-4-5.659V5a2 2 0 1 0-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 1 1-6 0v-1m6 0H9"/></svg>
+          </button>
+          <button onClick={() => setShowAccount(true)} className="w-9 h-9 bg-[#111] border border-[#1a1a1a] rounded-full flex items-center justify-center text-[#888] text-sm">
+            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8"/></svg>
+          </button>
         </div>
       </div>
 
