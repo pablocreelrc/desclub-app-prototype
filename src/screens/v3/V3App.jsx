@@ -5,17 +5,7 @@ import RedemptionFlow from '../../components/RedemptionFlow'
 import SearchBar from '../../components/SearchBar'
 import NotificationsPanel from '../../components/NotificationsPanel'
 import StatusBar from '../../components/StatusBar'
-
-const DEALS = [
-  { id: 1, brand: 'Cinépolis', discount: '2x1', detail: 'Boletos Martes y Jueves', dist: '1.2 km', image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&h=300&fit=crop', cat: 'Entretenimiento', points: '3X', description: 'Compra 1 boleto y lleva el 2do GRATIS todos los martes y jueves. Aplica para todas las salas incluyendo IMAX, 4DX y Macro XE.', expiry: '15 días', redeemed: 342, terms: ['Válido martes y jueves', 'No acumulable con otras promociones', 'Presentar membresía DescluB vigente', 'Sujeto a disponibilidad'] },
-  { id: 2, brand: 'Hertz', discount: '25% OFF', detail: 'Renta de auto fin de semana', dist: '3.5 km', image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&h=300&fit=crop', cat: 'Transporte', points: '2X', description: 'Obtén 25% de descuento en tu renta de auto para fines de semana. Incluye seguro básico y kilometraje ilimitado.', expiry: '30 días', redeemed: 128, terms: ['Válido viernes a domingo', 'Reservación con 48hrs de anticipación', 'Presentar membresía DescluB vigente', 'No aplica en temporada alta'] },
-  { id: 3, brand: 'Starbucks', discount: '15% OFF', detail: 'Todas las bebidas', dist: '0.4 km', image: 'https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=600&h=300&fit=crop', cat: 'Comida', points: '3X', description: '15% de descuento en cualquier bebida del menú. Aplica en cualquier sucursal participante.', expiry: '7 días', redeemed: 891, terms: ['Una bebida por visita', 'No acumulable', 'Sucursales participantes', 'Presentar QR de membresía'] },
-  { id: 4, brand: 'Sport City', discount: '3 días GRATIS', detail: 'Pase de cortesía completo', dist: '2.1 km', image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=300&fit=crop', cat: 'Fitness', points: '1X', description: 'Prueba Sport City con 3 días de acceso completo a todas las instalaciones sin costo.', expiry: '10 días', redeemed: 256, terms: ['Una vez por usuario', 'Registro presencial requerido', 'Aplica en cualquier sucursal', 'Mayor de 18 años'] },
-  { id: 5, brand: 'Liverpool', discount: '20% OFF', detail: 'Ropa y accesorios', dist: '0.8 km', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=300&fit=crop', cat: 'Retail', points: '2X', description: '20% de descuento en ropa y accesorios seleccionados. Válido en tienda física y en línea.', expiry: '20 días', redeemed: 567, terms: ['Departamentos seleccionados', 'No aplica con otras promociones', 'Válido en tienda y online', 'Máximo $5,000 MXN de descuento'] },
-  { id: 6, brand: 'Volaris', discount: '10% OFF', detail: 'Vuelos nacionales', dist: '', image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&h=300&fit=crop', cat: 'Viajes', points: '1X', description: 'Descuento exclusivo en vuelos nacionales comprando desde la app de Volaris con tu código DescluB.', expiry: '45 días', redeemed: 89, terms: ['Compra en volaris.com o app', 'Código único por membresía', 'Sujeto a disponibilidad de tarifas', 'No aplica en temporada alta'] },
-  { id: 7, brand: 'Tim Hortons', discount: '2x1', detail: 'Cafés y donuts L-M', dist: '0.6 km', image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=300&fit=crop', cat: 'Comida', points: '3X', description: '2x1 en todos los cafés y donuts de lunes a miércoles. Aplica en sucursales participantes.', expiry: '12 días', redeemed: 445, terms: ['Válido lunes a miércoles', 'Una promoción por visita', 'Sucursales participantes', 'No aplica en delivery'] },
-  { id: 8, brand: 'Devlyn', discount: '30% OFF', detail: 'Lentes y armazones', dist: '1.5 km', image: 'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=600&h=300&fit=crop', cat: 'Retail', points: '2X', description: '30% de descuento en armazones y lentes graduados. Incluye marcas premium como Ray-Ban y Oakley.', expiry: '25 días', redeemed: 198, terms: ['Armazones seleccionados', 'Incluye antirreflejante básico', 'Presentar membresía vigente', 'No acumulable'] },
-]
+import { DEALS } from '../../data/deals'
 
 const TAB_ICONS = {
   explore: 'M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z',
@@ -195,7 +185,10 @@ function ExploreTab({ onDealClick, onCategoryClick }) {
                 <span className="absolute top-1.5 right-1.5 bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md">{deal.expiry}</span>
               </div>
               <div className="p-2.5">
-                <p className="text-white text-xs font-semibold truncate">{deal.brand}</p>
+                <div className="flex items-center gap-1">
+                  <div className="w-4 h-4 rounded-full bg-blue-500 flex items-center justify-center text-white text-[6px] font-bold shrink-0">{deal.logo}</div>
+                  <p className="text-white text-xs font-semibold truncate">{deal.brand}</p>
+                </div>
                 <p className="text-blue-400 text-[11px] font-bold">{deal.discount}</p>
               </div>
             </button>
@@ -211,7 +204,10 @@ function ExploreTab({ onDealClick, onCategoryClick }) {
             <div className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-white font-bold text-sm">{deal.brand}</p>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center text-white text-[7px] font-bold shrink-0">{deal.logo}</div>
+                    <p className="text-white font-bold text-sm">{deal.brand}</p>
+                  </div>
                   <p className="text-[#888] text-xs mt-0.5">{deal.dist ? `${deal.dist} • ` : ''}{deal.cat} • {deal.detail}</p>
                 </div>
               </div>
@@ -249,7 +245,10 @@ function ExploreTab({ onDealClick, onCategoryClick }) {
           <button key={deal.id} onClick={() => onDealClick(deal)} className="w-full flex items-center gap-3 bg-[#111] border border-[#1a1a1a] rounded-xl p-3 mb-2 active:bg-[#1a1a1a]">
             <img src={deal.image} alt={deal.brand} className="w-14 h-14 rounded-lg object-cover" loading="lazy" />
             <div className="flex-1 text-left">
-              <p className="text-white text-sm font-semibold">{deal.brand}</p>
+              <div className="flex items-center gap-1.5">
+                <div className="w-4 h-4 rounded-full bg-blue-500 flex items-center justify-center text-white text-[6px] font-bold shrink-0">{deal.logo}</div>
+                <p className="text-white text-sm font-semibold">{deal.brand}</p>
+              </div>
               <p className="text-[#666] text-xs">{deal.detail}</p>
               <span className="text-blue-400 text-xs font-bold">{deal.points} Puntos</span>
             </div>
@@ -262,10 +261,10 @@ function ExploreTab({ onDealClick, onCategoryClick }) {
 }
 
 function DealsTab({ onDealClick, initialCategory }) {
-  const catMap = { 'Comida': 'Comida', 'Cine': 'Entretenimiento', 'Fitness': 'Fitness', 'Experiencias': null, 'Retail': 'Retail', 'Viajes': 'Viajes' }
+  const catMap = { 'Comida': 'Comida', 'Cine': 'Cine', 'Fitness': 'Wellness', 'Experiencias': 'Entretenimiento', 'Retail': 'Retail', 'Viajes': 'Viajes' }
   const [activeCat, setActiveCat] = useState(initialCategory ? (catMap[initialCategory] || null) : null)
-  const cats = [null, 'Comida', 'Entretenimiento', 'Retail', 'Fitness', 'Viajes', 'Transporte']
-  const catLabels = { null: 'Todos', 'Comida': 'Comida', 'Entretenimiento': 'Cine', 'Retail': 'Retail', 'Fitness': 'Fitness', 'Viajes': 'Viajes', 'Transporte': 'Autos' }
+  const cats = [null, 'Comida', 'Cine', 'Retail', 'Wellness', 'Viajes', 'Autos', 'Entretenimiento', 'Servicios']
+  const catLabels = { null: 'Todos', 'Comida': 'Comida', 'Cine': 'Cine', 'Retail': 'Retail', 'Wellness': 'Wellness', 'Viajes': 'Viajes', 'Autos': 'Autos', 'Entretenimiento': 'Eventos', 'Servicios': 'Servicios' }
 
   const filtered = activeCat ? DEALS.filter(d => d.cat === activeCat) : DEALS
 
@@ -300,7 +299,10 @@ function DealsTab({ onDealClick, initialCategory }) {
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
               <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between">
                 <div>
-                  <p className="text-white font-bold text-base">{deal.brand}</p>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center text-white text-[7px] font-bold shrink-0">{deal.logo}</div>
+                    <p className="text-white font-bold text-base">{deal.brand}</p>
+                  </div>
                   <p className="text-gray-300 text-xs mt-0.5">{deal.detail}</p>
                 </div>
                 <span className="bg-blue-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg">{deal.discount}</span>
@@ -410,7 +412,10 @@ function RewardsTab({ onDealClick }) {
                 <img src={deal.image} alt={deal.brand} className="w-full h-full object-cover" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                 <div className="absolute bottom-2 left-3 right-3 flex items-end justify-between">
-                  <p className="text-white font-bold text-sm">{deal.brand}</p>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-4 h-4 rounded-full bg-blue-500 flex items-center justify-center text-white text-[6px] font-bold shrink-0">{deal.logo}</div>
+                    <p className="text-white font-bold text-sm">{deal.brand}</p>
+                  </div>
                   <span className="text-white text-xs bg-blue-500 px-2 py-1 rounded-lg font-bold">{deal.discount}</span>
                 </div>
               </div>

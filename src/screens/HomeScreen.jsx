@@ -8,6 +8,7 @@ const CATEGORIES = [
   { key: 'wellness', label: 'Wellness' },
   { key: 'viajes', label: 'Viajes' },
   { key: 'autos', label: 'Autos' },
+  { key: 'servicios', label: 'Servicios' },
 ]
 
 export default function HomeScreen({ deals, onDealClick }) {
@@ -96,7 +97,10 @@ export default function HomeScreen({ deals, onDealClick }) {
                       </span>
                     </div>
                     <div className="p-2.5">
-                      <p className="text-[13px] font-semibold text-text-primary truncate">{deal.brand}</p>
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-5 h-5 rounded-full bg-primary-500 flex items-center justify-center text-white text-[7px] font-bold shrink-0">{deal.logo}</div>
+                        <p className="text-[13px] font-semibold text-text-primary truncate">{deal.brand}</p>
+                      </div>
                       <p className="text-accent-500 text-[12px] font-bold">{deal.discount}</p>
                     </div>
                   </button>
@@ -137,7 +141,10 @@ export default function HomeScreen({ deals, onDealClick }) {
                   </span>
                 </div>
                 <div className="p-2.5">
-                  <p className="text-[13px] font-semibold text-text-primary truncate">{deal.brand}</p>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-5 h-5 rounded-full bg-primary-500 flex items-center justify-center text-white text-[7px] font-bold shrink-0">{deal.logo}</div>
+                    <p className="text-[13px] font-semibold text-text-primary truncate">{deal.brand}</p>
+                  </div>
                   <p className="text-[11px] text-text-secondary mt-0.5 truncate">{deal.detail}</p>
                   {deal.dist && (
                     <p className="text-[10px] text-text-secondary mt-1 font-medium flex items-center gap-0.5"><svg className="w-2.5 h-2.5 inline-block" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> {deal.dist}</p>

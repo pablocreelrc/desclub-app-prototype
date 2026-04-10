@@ -62,9 +62,6 @@ export default function LoginScreen({ onLogin }) {
           Al continuar aceptas los <span className="underline">Términos</span> y <span className="underline">Privacidad</span>
         </p>
 
-        <button onClick={onLogin} className="block mx-auto text-primary-500 font-semibold text-[13px] mt-2">
-          Explorar sin cuenta →
-        </button>
       </div>
     </div>
   )

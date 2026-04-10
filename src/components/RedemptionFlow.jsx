@@ -26,7 +26,22 @@ export default function RedemptionFlow({ deal, onClose, variant = 'light' }) {
   const secs = timeLeft % 60
 
   const handleRedeem = () => {
-    const amount = Math.floor(Math.random() * 150) + 40
+    const disc = deal.discount.toLowerCase()
+    let amount
+    if (disc.includes('2x1')) {
+      amount = Math.floor(Math.random() * 51) + 70 // 70-120
+    } else if (disc.includes('gratis')) {
+      amount = Math.floor(Math.random() * 301) + 200 // 200-500
+    } else {
+      const pctMatch = disc.match(/(\d+)%/)
+      if (pctMatch) {
+        const pct = parseInt(pctMatch[1], 10)
+        const multiplier = Math.random() * 2 + 3 // 3-5
+        amount = Math.round(pct * multiplier)
+      } else {
+        amount = Math.floor(Math.random() * 150) + 40
+      }
+    }
     setSavings(amount)
     setStage('success')
   }

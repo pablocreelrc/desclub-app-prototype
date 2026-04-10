@@ -53,9 +53,6 @@ export default function V2Login({ onLogin }) {
         >
           Continuar con Email
         </button>
-        <button onClick={onLogin} className="text-[#666] font-medium text-xs mt-2">
-          Explorar sin cuenta →
-        </button>
       </div>
     </div>
   )

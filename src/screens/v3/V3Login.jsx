@@ -43,9 +43,6 @@ export default function V3Login({ onLogin }) {
         <button onClick={onLogin} className="w-full h-[52px] bg-[#111] border border-[#222] text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-3 active:scale-[0.98] transition-transform">
           Continuar con Email
         </button>
-        <button onClick={onLogin} className="text-[#555] font-medium text-xs mt-1">
-          Explorar sin cuenta →
-        </button>
       </div>
     </div>
   )

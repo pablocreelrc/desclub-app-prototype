@@ -17,7 +17,7 @@ export default function ThemeDemo({ onClose }) {
         {/* Header */}
         <div className="shrink-0 pt-safe md:pt-14 px-5 pb-3 flex items-center justify-between">
           <div>
-            <p className="text-white/50 text-[10px] font-semibold uppercase tracking-widest">White-Label Demo</p>
+            <p className="text-white/50 text-[10px] font-semibold uppercase tracking-widest">Tu marca, nuestra app</p>
             <h2 className="text-white text-lg font-bold">Tu marca, nuestra plataforma</h2>
           </div>
           <button onClick={onClose} className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-white text-sm">
