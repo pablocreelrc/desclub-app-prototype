@@ -119,15 +119,16 @@ function OverviewTab({ onDealClick, onShowCard }) {
       {/* Getting started 2x2 grid — like PGA Tour actions */}
       <div className="grid grid-cols-2 gap-3 mb-10">
         {[
-          { label: 'Activar ubicación para ofertas locales', image: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=300&h=200&fit=crop' },
-          { label: 'Agregar marcas favoritas a tu perfil', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop' },
-          { label: 'Agregar tarjeta a Apple Wallet', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=300&h=200&fit=crop', onClick: onShowCard },
-          { label: 'Activar notificaciones de ofertas', image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300&h=200&fit=crop' },
+          { label: 'Activar ubicación para ofertas locales', image: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=300&h=200&fit=crop', done: true },
+          { label: 'Agregar marcas favoritas a tu perfil', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop', done: false },
+          { label: 'Agregar tarjeta a Apple Wallet', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=300&h=200&fit=crop', onClick: onShowCard, done: false },
+          { label: 'Activar notificaciones de ofertas', image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300&h=200&fit=crop', done: true },
         ].map((item, i) => (
-          <button key={i} onClick={item.onClick} className="rounded-xl overflow-hidden text-left active:opacity-80 transition-opacity">
+          <button key={i} onClick={item.onClick || (() => {})} className="rounded-xl overflow-hidden text-left active:opacity-80 transition-opacity">
             <div className="relative h-24">
               <img src={item.image} alt="" className="w-full h-full object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-black/50" />
+              {item.done && <div className="absolute top-2 right-2 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold">✓</div>}
             </div>
             <p className="text-white text-xs font-medium mt-2 leading-tight">{item.label}</p>
           </button>

@@ -136,7 +136,7 @@ function DealDetail({ deal, onBack }) {
   )
 }
 
-function ExploreTab({ onDealClick }) {
+function ExploreTab({ onDealClick, onCategoryClick }) {
   const categories = [
     { path: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z', label: 'Comida' },
     { path: 'M19 2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 12 12 12s-3.5-1.57-3.5-3.5S10.07 5 12 5zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V18z', label: 'Cine' },
@@ -177,7 +177,7 @@ function ExploreTab({ onDealClick }) {
         <div className="w-12 h-0.5 bg-blue-500 mb-3" />
         <div className="grid grid-cols-3 gap-2 mb-6">
           {categories.map((c) => (
-            <button key={c.label} className="bg-[#111] border border-[#1a1a1a] rounded-xl py-3.5 text-center active:bg-[#1a1a1a] transition-colors">
+            <button key={c.label} onClick={() => onCategoryClick && onCategoryClick(c.label)} className="bg-[#111] border border-[#1a1a1a] rounded-xl py-3.5 text-center active:bg-[#1a1a1a] transition-colors">
               <svg viewBox="0 0 24 24" className="w-5 h-5 text-blue-400 mx-auto" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                 <path d={c.path} />
               </svg>
@@ -245,8 +245,9 @@ function ExploreTab({ onDealClick }) {
   )
 }
 
-function DealsTab({ onDealClick }) {
-  const [activeCat, setActiveCat] = useState(null)
+function DealsTab({ onDealClick, initialCategory }) {
+  const catMap = { 'Comida': 'Comida', 'Cine': 'Entretenimiento', 'Fitness': 'Fitness', 'Experiencias': null, 'Retail': 'Retail', 'Viajes': 'Viajes' }
+  const [activeCat, setActiveCat] = useState(initialCategory ? (catMap[initialCategory] || null) : null)
   const cats = [null, 'Comida', 'Entretenimiento', 'Retail', 'Fitness', 'Viajes', 'Transporte']
   const catLabels = { null: 'Todos', 'Comida': 'Comida', 'Entretenimiento': 'Cine', 'Retail': 'Retail', 'Fitness': 'Fitness', 'Viajes': 'Viajes', 'Transporte': 'Autos' }
 
@@ -519,6 +520,7 @@ export default function V3App() {
   const [selectedDeal, setSelectedDeal] = useState(null)
   const [showQRCard, setShowQRCard] = useState(false)
   const [showAccount, setShowAccount] = useState(false)
+  const [dealsCatFilter, setDealsCatFilter] = useState(null)
   const points = 1250
 
   if (!loggedIn) {
@@ -556,8 +558,8 @@ export default function V3App() {
 
       {/* Content */}
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain">
-        {activeTab === 'explore' && <ExploreTab onDealClick={setSelectedDeal} />}
-        {activeTab === 'deals' && <DealsTab onDealClick={setSelectedDeal} />}
+        {activeTab === 'explore' && <ExploreTab onDealClick={setSelectedDeal} onCategoryClick={(cat) => { setDealsCatFilter(cat); setActiveTab('deals'); }} />}
+        {activeTab === 'deals' && <DealsTab onDealClick={setSelectedDeal} initialCategory={dealsCatFilter} />}
         {activeTab === 'rewards' && <RewardsTab onDealClick={setSelectedDeal} />}
         {activeTab === 'wallet' && <WalletTab />}
       </div>

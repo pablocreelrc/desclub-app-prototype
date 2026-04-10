@@ -1,6 +1,6 @@
 export default function V2Login({ onLogin }) {
   return (
-    <div className="h-full flex flex-col bg-black font-vb">
+    <div className="flex-1 min-h-0 flex flex-col bg-black font-vb">
       {/* Hero — PGA Tour Pass style: dark, logo, welcome */}
       <div className="flex-1 flex flex-col items-center justify-center px-10 text-center">
         <div className="mb-8">

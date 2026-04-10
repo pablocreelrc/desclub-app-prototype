@@ -1,6 +1,6 @@
 export default function V3Login({ onLogin }) {
   return (
-    <div className="h-full flex flex-col bg-black font-vc">
+    <div className="flex-1 min-h-0 flex flex-col bg-black font-vc">
       {/* Background */}
       <div className="flex-1 relative flex flex-col items-center justify-center px-10 text-center">
         <div className="absolute inset-0 opacity-20 bg-gradient-to-b from-[#1a2a4a] to-[#0a0a0f]" />
