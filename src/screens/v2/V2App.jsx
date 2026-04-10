@@ -119,12 +119,12 @@ function OverviewTab({ onDealClick, onShowCard }) {
       {/* Getting started 2x2 grid — like PGA Tour actions */}
       <div className="grid grid-cols-2 gap-3 mb-10">
         {[
-          { label: 'Activar ubicación para ofertas locales', image: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=300&h=200&fit=crop', done: true },
-          { label: 'Agregar marcas favoritas a tu perfil', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop', done: false },
-          { label: 'Agregar tarjeta a Apple Wallet', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=300&h=200&fit=crop', onClick: onShowCard, done: false },
-          { label: 'Activar notificaciones de ofertas', image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300&h=200&fit=crop', done: true },
+          { label: 'Activar ubicación', image: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=300&h=200&fit=crop', done: true },
+          { label: 'Marcas favoritas', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop', done: true },
+          { label: 'Agregar a Wallet', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=300&h=200&fit=crop', onClick: onShowCard, done: false },
+          { label: 'Notificaciones', image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300&h=200&fit=crop', done: true },
         ].map((item, i) => (
-          <button key={i} onClick={item.onClick || (() => {})} className="rounded-xl overflow-hidden text-left active:opacity-80 transition-opacity">
+          <button key={i} onClick={item.onClick || onShowCard} className="rounded-xl overflow-hidden text-left active:opacity-80 transition-opacity">
             <div className="relative h-24">
               <img src={item.image} alt="" className="w-full h-full object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-black/50" />
@@ -229,7 +229,10 @@ function BenefitsTab({ onDealClick }) {
             </div>
           )}
           {expanded === i && cat.deals.length === 0 && (
-            <p className="text-[#555] text-xs py-4">Próximamente — estamos preparando ofertas exclusivas</p>
+            <div className="bg-[#111] rounded-xl p-4 mt-2 flex items-center gap-3 border border-[#1a1a1a]">
+              <svg className="w-5 h-5 text-[#555] shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+              <div><p className="text-[#888] text-xs font-semibold">Próximamente</p><p className="text-[#555] text-[10px] mt-0.5">Estamos preparando ofertas exclusivas</p></div>
+            </div>
           )}
         </div>
       ))}
@@ -378,7 +381,7 @@ function SupportTab() {
   ]
 
   return (
-    <div className="px-5 pb-8">
+    <div className="px-5 pb-20">
       <h2 className="text-white text-2xl font-bold mb-1 font-vb-display italic">FAQs</h2>
       <div className="w-full h-0.5 gold-line mb-4" />
 
@@ -474,7 +477,7 @@ export default function V2App() {
       {/* Card Modal */}
       {showCard && (
         <div className="absolute inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-end" onClick={() => setShowCard(false)}>
-          <div className="bg-[#111] w-full rounded-t-3xl p-6 pb-10 border-t border-[#222]" onClick={e => e.stopPropagation()}>
+          <div className="bg-[#111] w-full rounded-t-3xl p-6 border-t border-[#222]" style={{ paddingBottom: 'calc(2.5rem + env(safe-area-inset-bottom, 0px))' }} onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-white text-lg font-bold">Tu Membresía</h2>
               <button onClick={() => setShowCard(false)} className="text-[#666] text-xl">✕</button>

@@ -140,7 +140,7 @@ export default function HomeScreen({ deals, onDealClick }) {
                   <p className="text-[13px] font-semibold text-text-primary truncate">{deal.brand}</p>
                   <p className="text-[11px] text-text-secondary mt-0.5 truncate">{deal.detail}</p>
                   {deal.dist && (
-                    <p className="text-[10px] text-text-secondary mt-1 font-medium">📍 {deal.dist}</p>
+                    <p className="text-[10px] text-text-secondary mt-1 font-medium flex items-center gap-0.5"><svg className="w-2.5 h-2.5 inline-block" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> {deal.dist}</p>
                   )}
                 </div>
               </button>
@@ -149,7 +149,7 @@ export default function HomeScreen({ deals, onDealClick }) {
 
           {filtered.length === 0 && (
             <div className="text-center py-16">
-              <p className="text-4xl mb-2">🔍</p>
+              <div className="flex justify-center mb-2"><svg className="w-10 h-10 text-text-secondary" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
               <p className="text-[15px] font-semibold text-text-primary">Sin resultados</p>
               <p className="text-[13px] text-text-secondary mt-1">Prueba otra categoría</p>
             </div>

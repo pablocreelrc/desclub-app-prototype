@@ -50,7 +50,7 @@ export default function CardScreen() {
                     <span className="text-gray-800 text-[13px] font-mono font-bold">CVV: 847</span>
                   </div>
                   <p className="text-gray-400 text-[10px] mt-3 leading-relaxed">
-                    Propiedad de Loyalty Solutions SA de CV. Soporte: WhatsApp 💬
+                    Propiedad de Loyalty Solutions SA de CV. Soporte: WhatsApp
                   </p>
                 </div>
                 <div className="absolute bottom-3 right-5">
@@ -111,7 +111,7 @@ export default function CardScreen() {
           { brand: 'Liverpool', date: '3 abr, 2:10 PM', discount: '20% OFF', saved: '$580' },
         ].map((item, i) => (
           <div key={i} className="flex items-center gap-3 py-2.5 border-b border-gray-100 last:border-0">
-            <div className="w-9 h-9 bg-primary-50 rounded-lg flex items-center justify-center text-[14px]">🎟</div>
+            <div className="w-9 h-9 bg-primary-50 rounded-lg flex items-center justify-center"><svg className="w-4 h-4 text-primary-600" viewBox="0 0 24 24" fill="currentColor"><path d="M22 10V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v4c1.1 0 2 .9 2 2s-.9 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-9 7.5h-2v-2h2v2zm0-4.5h-2v-2h2v2zm0-4.5h-2v-2h2v2z"/></svg></div>
             <div className="flex-1 min-w-0">
               <p className="text-[13px] font-semibold text-text-primary">{item.brand}</p>
               <p className="text-[11px] text-text-secondary">{item.date}</p>

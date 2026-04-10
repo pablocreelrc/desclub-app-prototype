@@ -45,7 +45,7 @@ export default function DealDetailScreen({ deal, saved, onToggleSave, onBack }) 
         <div className="flex items-center gap-1.5 mt-1 text-[13px] text-text-secondary font-medium">
           <span>{deal.cat.replace(/^[^\s]+\s/, '')}</span>
           <span className="text-gray-300">·</span>
-          <span>📍 {deal.dist || 'Online'}</span>
+          <span className="flex items-center gap-0.5"><svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> {deal.dist || 'Online'}</span>
           <span className="text-gray-300">·</span>
           <span>★ {deal.rating}</span>
         </div>
@@ -55,14 +55,14 @@ export default function DealDetailScreen({ deal, saved, onToggleSave, onBack }) 
         {/* Chips */}
         <div className="flex gap-2 mt-4 flex-wrap">
           <span className="bg-red-50 text-red-600 text-[12px] font-semibold px-3 py-1.5 rounded-lg">
-            ⏰ {deal.expiry}
+            Vence en {deal.expiry}
           </span>
           <span className="bg-blue-50 text-blue-600 text-[12px] font-semibold px-3 py-1.5 rounded-lg">
             {deal.redeemed.toLocaleString()} canjearon
           </span>
           {deal.redeemed > 200 && (
             <span className="bg-orange-50 text-orange-600 text-[12px] font-semibold px-3 py-1.5 rounded-lg">
-              🔥 Popular
+              Popular
             </span>
           )}
         </div>
@@ -124,7 +124,7 @@ export default function DealDetailScreen({ deal, saved, onToggleSave, onBack }) 
             onClick={() => window.open(`https://www.google.com/maps/search/${encodeURIComponent(deal.brand)}/@${deal.lat || 19.43},${deal.lng || -99.13},15z`, '_blank')}
             className="w-14 h-12 bg-gray-100 rounded-xl flex items-center justify-center active:bg-gray-200"
           >
-            <span className="text-[18px]">📍</span>
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
           </button>
         )}
         <button

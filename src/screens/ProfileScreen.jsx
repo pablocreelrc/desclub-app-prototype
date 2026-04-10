@@ -55,7 +55,7 @@ export default function ProfileScreen({ onLogout }) {
             </div>
           </div>
           <button onClick={() => setModal('profile')} className="w-8 h-8 bg-white/15 rounded-lg flex items-center justify-center text-white text-[13px] active:bg-white/25">
-            ✏️
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
           </button>
         </div>
       </div>
@@ -144,7 +144,7 @@ export default function ProfileScreen({ onLogout }) {
             { brand: 'Sport City', date: '28 mar', discount: 'Gratis', saved: '$450' },
           ].map((item, i) => (
             <div key={i} className="flex items-center gap-3 py-2.5 border-b border-gray-100 last:border-0">
-              <div className="w-9 h-9 bg-primary-50 rounded-lg flex items-center justify-center text-[14px]">🎟</div>
+              <div className="w-9 h-9 bg-primary-50 rounded-lg flex items-center justify-center"><svg className="w-4 h-4 text-primary-600" viewBox="0 0 24 24" fill="currentColor"><path d="M22 10V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v4c1.1 0 2 .9 2 2s-.9 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-9 7.5h-2v-2h2v2zm0-4.5h-2v-2h2v2zm0-4.5h-2v-2h2v2z"/></svg></div>
               <div className="flex-1"><p className="text-[13px] font-semibold text-text-primary">{item.brand}</p><p className="text-[11px] text-text-secondary">{item.date}</p></div>
               <div className="text-right"><p className="text-[12px] font-semibold text-success">-{item.saved}</p><p className="text-[10px] text-text-secondary">{item.discount}</p></div>
             </div>
@@ -155,7 +155,7 @@ export default function ProfileScreen({ onLogout }) {
         <Modal title="Favoritos" onClose={() => setModal(null)}>
           {['Cinépolis', 'Starbucks', 'Liverpool', 'Hertz', 'Sport City', 'Tim Hortons'].map((brand, i) => (
             <div key={i} className="flex items-center gap-3 py-2.5 border-b border-gray-100 last:border-0">
-              <div className="w-9 h-9 bg-red-50 rounded-lg flex items-center justify-center text-[14px]">❤️</div>
+              <div className="w-9 h-9 bg-red-50 rounded-lg flex items-center justify-center"><svg className="w-4 h-4 text-red-500" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
               <p className="flex-1 text-[13px] font-semibold text-text-primary">{brand}</p>
               <span className="text-[12px] text-text-secondary">Ver ›</span>
             </div>

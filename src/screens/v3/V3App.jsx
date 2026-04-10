@@ -25,7 +25,7 @@ const TABS = [
   { key: 'deals', label: 'Ofertas' },
   { key: 'center', label: 'DC' },
   { key: 'rewards', label: 'Puntos' },
-  { key: 'wallet', label: 'Wallet' },
+  { key: 'wallet', label: 'Cartera' },
 ]
 
 /* Full-screen Deal Detail Page */
@@ -426,7 +426,7 @@ function RewardsTab({ onDealClick }) {
           <h3 className="text-white text-sm font-bold mb-3">Beneficios en viajes</h3>
           {['2X puntos en hoteles', '1X puntos en vuelos', '10% descuento Hertz'].map((b, i) => (
             <div key={i} className="flex items-center gap-3 py-3 border-b border-[#1a1a25]">
-              <span className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400 text-xs">✈</span>
+              <span className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center"><svg className="w-4 h-4 text-blue-400" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></span>
               <p className="text-white text-sm">{b}</p>
             </div>
           ))}
@@ -437,13 +437,13 @@ function RewardsTab({ onDealClick }) {
         <div>
           <p className="text-[#888] text-sm mb-4">Transfiere puntos a programas de lealtad aliados.</p>
           {[
-            { name: 'Volaris V.Club', ratio: '1:1', icon: '✈️' },
-            { name: 'Club Premier', ratio: '1:1', icon: '🌟' },
-            { name: 'Hilton Honors', ratio: '1:1', icon: '🏨' },
-            { name: 'Cinépolis Club', ratio: '1:2', icon: '🎬' },
+            { name: 'Volaris V.Club', ratio: '1:1', icon: 'M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z' },
+            { name: 'Club Premier', ratio: '1:1', icon: 'M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z' },
+            { name: 'Hilton Honors', ratio: '1:1', icon: 'M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l6 3v5.64l-6 3-6-3V7.18l6-3z' },
+            { name: 'Cinépolis Club', ratio: '1:2', icon: 'M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z' },
           ].map((p, i) => (
             <div key={i} className="flex items-center gap-3 bg-[#111] border border-[#1a1a1a] rounded-xl p-4 mb-2">
-              <span className="text-xl">{p.icon}</span>
+              <svg className="w-5 h-5 text-blue-400" viewBox="0 0 24 24" fill="currentColor"><path d={p.icon}/></svg>
               <div className="flex-1">
                 <p className="text-white text-sm font-semibold">{p.name}</p>
                 <p className="text-[#888] text-xs">Transfer {p.ratio}</p>
@@ -484,7 +484,7 @@ function WalletTab() {
       </div>
 
       <button onClick={() => setAddedToWallet(true)} className={`w-full h-12 rounded-xl font-semibold text-sm mb-5 transition-all ${addedToWallet ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' : 'bg-white text-black active:scale-[0.97]'}`}>
-        {addedToWallet ? '✓ Agregada a Wallet' : ' Agregar a Apple Wallet'}
+        {addedToWallet ? '✓ Agregada a Cartera' : 'Agregar a Apple Wallet'}
       </button>
 
       {/* Linked cards */}
@@ -503,7 +503,7 @@ function WalletTab() {
             <p className="text-white text-sm font-semibold">{card.name}</p>
             <p className="text-[#888] text-xs">•••• {card.last4}</p>
           </div>
-          <span className="w-7 h-7 bg-[#1a1a1a] rounded-full flex items-center justify-center text-[#888] text-lg">+</span>
+          <span className="text-blue-400 text-xs font-semibold">Vinculada</span>
         </div>
       ))}
 
@@ -587,7 +587,7 @@ export default function V3App() {
       {/* Account Modal */}
       {showAccount && (
         <div className="absolute inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-end" onClick={() => setShowAccount(false)}>
-          <div className="bg-[#111] w-full rounded-t-3xl p-6 pb-10 border-t border-[#222]" onClick={e => e.stopPropagation()}>
+          <div className="bg-[#111] w-full rounded-t-3xl p-6 border-t border-[#222]" style={{ paddingBottom: 'calc(2.5rem + env(safe-area-inset-bottom, 0px))' }} onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-5">
               <h2 className="text-white text-lg font-bold">Mi Cuenta</h2>
               <button onClick={() => setShowAccount(false)} className="text-[#666] text-xl">✕</button>
@@ -632,7 +632,7 @@ export default function V3App() {
       {/* Tab bar */}
       <div className="shrink-0 bg-black border-t border-[#1a1a25] flex items-center justify-around px-2 pt-2" style={{ paddingBottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}>
         {TABS.map((tab) => (
-          <button key={tab.key} onClick={() => tab.key === 'center' ? setShowQRCard(true) : setActiveTab(tab.key)} className={`flex flex-col items-center gap-0.5 ${tab.key === 'center' ? 'relative -mt-5' : ''}`}>
+          <button key={tab.key} onClick={() => { if (tab.key === 'center') { setShowQRCard(true) } else { setActiveTab(tab.key); if (tab.key === 'deals') setDealsCatFilter(null); } }} className={`flex flex-col items-center gap-0.5 ${tab.key === 'center' ? 'relative -mt-5' : ''}`}>
             {tab.key === 'center' ? (
               <div className="w-14 h-14 bg-blue-500 rounded-full flex items-center justify-center text-white text-xl font-bold dc-glow active:scale-95 transition-transform">
                 DC

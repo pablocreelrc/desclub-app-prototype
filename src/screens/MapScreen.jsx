@@ -66,7 +66,7 @@ export default function MapScreen({ deals, onDealClick }) {
                   <span className="shrink-0 bg-accent-500 text-white text-[11px] font-bold px-2 py-0.5 rounded-md">{selected.discount}</span>
                 </div>
                 <p className="text-[12px] text-text-secondary mt-0.5 truncate">{selected.detail}</p>
-                <p className="text-[11px] text-gray-400 mt-1">📍 {selected.dist} · ★ {selected.rating}</p>
+                <p className="text-[11px] text-gray-400 mt-1 flex items-center gap-0.5"><svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> {selected.dist} · ★ {selected.rating}</p>
               </div>
             </button>
             <button onClick={() => setSelected(null)} className="absolute -top-2 -right-2 w-6 h-6 bg-gray-800 text-white rounded-full text-[11px] flex items-center justify-center shadow-md">✕</button>
