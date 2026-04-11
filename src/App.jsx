@@ -23,11 +23,18 @@ function LoginScreen({ onLogin }) {
       <div className="flex-1 relative flex flex-col items-center justify-center px-10 text-center">
         <div className="absolute inset-0 opacity-20 bg-gradient-to-b from-[#1a2a4a] to-[#0a0a0f]" />
         <div className="relative z-10">
-          <div className="w-20 h-20 rounded-2xl bg-[#111] border border-[#222] flex items-center justify-center mx-auto mb-6">
-            <span className="text-3xl font-bold text-white tracking-tighter">DC</span>
+          {/* DescluB brand logo */}
+          <div className="mb-8">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30">
+                <span className="text-white text-2xl font-bold tracking-tighter">DC</span>
+              </div>
+              <div className="text-left">
+                <p className="text-white text-2xl font-bold tracking-tight leading-none">DescluB</p>
+                <p className="text-blue-400 text-xs font-semibold tracking-widest leading-none mt-1">DESCUENTOS + PUNTOS</p>
+              </div>
+            </div>
           </div>
-          <h1 className="text-white text-3xl font-bold tracking-tight mb-1">DescluB</h1>
-          <p className="text-blue-400 text-sm font-semibold mb-6">DESCUENTOS + PUNTOS</p>
           <p className="text-[#666680] text-sm leading-relaxed mb-2">
             Descuentos exclusivos, puntos<br />que valen y marcas que amas.
           </p>
