@@ -4,7 +4,7 @@ export default function Header({ onBellPress, onAvatarPress }) {
   const unreadCount = 2
 
   return (
-    <div className="shrink-0 px-4 pt-2 pb-2">
+    <div className="shrink-0 px-4 pt-safe md:pt-14 pb-2">
       {/* Top row: points pill + bell + avatar */}
       <div className="flex items-center justify-between mb-2.5">
         {/* Points pill */}
