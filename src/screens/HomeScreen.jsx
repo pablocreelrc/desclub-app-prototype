@@ -98,7 +98,7 @@ export default function HomeScreen({ deals, onDealClick }) {
                     </div>
                     <div className="p-2.5">
                       <div className="flex items-center gap-1.5">
-                        <div className="w-5 h-5 rounded-full bg-primary-500 flex items-center justify-center text-white text-[7px] font-bold shrink-0">{deal.logo}</div>
+                        <img src={deal.logo} alt={deal.brand} className="w-5 h-5 rounded-full object-contain bg-white shrink-0" />
                         <p className="text-[13px] font-semibold text-text-primary truncate">{deal.brand}</p>
                       </div>
                       <p className="text-accent-500 text-[12px] font-bold">{deal.discount}</p>
@@ -142,7 +142,7 @@ export default function HomeScreen({ deals, onDealClick }) {
                 </div>
                 <div className="p-2.5">
                   <div className="flex items-center gap-1.5">
-                    <div className="w-5 h-5 rounded-full bg-primary-500 flex items-center justify-center text-white text-[7px] font-bold shrink-0">{deal.logo}</div>
+                    <img src={deal.logo} alt={deal.brand} className="w-5 h-5 rounded-full object-contain bg-white shrink-0" />
                     <p className="text-[13px] font-semibold text-text-primary truncate">{deal.brand}</p>
                   </div>
                   <p className="text-[11px] text-text-secondary mt-0.5 truncate">{deal.detail}</p>

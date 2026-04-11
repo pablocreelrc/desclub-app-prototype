@@ -186,7 +186,7 @@ function ExploreTab({ onDealClick, onCategoryClick }) {
               </div>
               <div className="p-2.5">
                 <div className="flex items-center gap-1">
-                  <div className="w-4 h-4 rounded-full bg-blue-500 flex items-center justify-center text-white text-[6px] font-bold shrink-0">{deal.logo}</div>
+                  <img src={deal.logo} alt={deal.brand} className="w-4 h-4 rounded-full object-contain bg-white shrink-0" />
                   <p className="text-white text-xs font-semibold truncate">{deal.brand}</p>
                 </div>
                 <p className="text-blue-400 text-[11px] font-bold">{deal.discount}</p>
@@ -205,7 +205,7 @@ function ExploreTab({ onDealClick, onCategoryClick }) {
               <div className="flex items-center justify-between">
                 <div>
                   <div className="flex items-center gap-1.5">
-                    <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center text-white text-[7px] font-bold shrink-0">{deal.logo}</div>
+                    <img src={deal.logo} alt={deal.brand} className="w-5 h-5 rounded-full object-contain bg-white shrink-0" />
                     <p className="text-white font-bold text-sm">{deal.brand}</p>
                   </div>
                   <p className="text-[#888] text-xs mt-0.5">{deal.dist ? `${deal.dist} • ` : ''}{deal.cat} • {deal.detail}</p>
@@ -246,7 +246,7 @@ function ExploreTab({ onDealClick, onCategoryClick }) {
             <img src={deal.image} alt={deal.brand} className="w-14 h-14 rounded-lg object-cover" loading="lazy" />
             <div className="flex-1 text-left">
               <div className="flex items-center gap-1.5">
-                <div className="w-4 h-4 rounded-full bg-blue-500 flex items-center justify-center text-white text-[6px] font-bold shrink-0">{deal.logo}</div>
+                <img src={deal.logo} alt={deal.brand} className="w-4 h-4 rounded-full object-contain bg-white shrink-0" />
                 <p className="text-white text-sm font-semibold">{deal.brand}</p>
               </div>
               <p className="text-[#666] text-xs">{deal.detail}</p>
@@ -300,7 +300,7 @@ function DealsTab({ onDealClick, initialCategory }) {
               <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between">
                 <div>
                   <div className="flex items-center gap-1.5">
-                    <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center text-white text-[7px] font-bold shrink-0">{deal.logo}</div>
+                    <img src={deal.logo} alt={deal.brand} className="w-5 h-5 rounded-full object-contain bg-white shrink-0" />
                     <p className="text-white font-bold text-base">{deal.brand}</p>
                   </div>
                   <p className="text-gray-300 text-xs mt-0.5">{deal.detail}</p>
@@ -413,7 +413,7 @@ function RewardsTab({ onDealClick }) {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                 <div className="absolute bottom-2 left-3 right-3 flex items-end justify-between">
                   <div className="flex items-center gap-1.5">
-                    <div className="w-4 h-4 rounded-full bg-blue-500 flex items-center justify-center text-white text-[6px] font-bold shrink-0">{deal.logo}</div>
+                    <img src={deal.logo} alt={deal.brand} className="w-4 h-4 rounded-full object-contain bg-white shrink-0" />
                     <p className="text-white font-bold text-sm">{deal.brand}</p>
                   </div>
                   <span className="text-white text-xs bg-blue-500 px-2 py-1 rounded-lg font-bold">{deal.discount}</span>

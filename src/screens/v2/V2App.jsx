@@ -125,7 +125,7 @@ function OverviewTab({ onDealClick, onShowCard }) {
             <img src={deal.image} alt={deal.brand} className="w-16 h-16 rounded-lg object-cover shrink-0" loading="lazy" />
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-1.5">
-                <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center text-black text-[7px] font-bold shrink-0">{deal.logo}</div>
+                <img src={deal.logo} alt={deal.brand} className="w-5 h-5 rounded-full object-contain bg-white shrink-0" />
                 <p className="text-white text-sm font-bold">{deal.brand}</p>
               </div>
               <p className="text-[#888] text-xs mt-0.5">{deal.detail}</p>
@@ -147,7 +147,7 @@ function OverviewTab({ onDealClick, onShowCard }) {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4">
                 <div className="flex items-center gap-1.5">
-                  <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center text-black text-[7px] font-bold shrink-0">{deal.logo}</div>
+                  <img src={deal.logo} alt={deal.brand} className="w-5 h-5 rounded-full object-contain bg-white shrink-0" />
                   <p className="text-white font-bold text-base">{deal.brand}</p>
                 </div>
                 <p className="text-[#aaa] text-xs mt-0.5">{deal.detail} — {deal.discount}</p>
@@ -207,7 +207,7 @@ function BenefitsTab({ onDealClick }) {
                   <img src={deal.image} alt={deal.brand} className="w-12 h-12 rounded-lg object-cover" loading="lazy" />
                   <div className="flex-1">
                     <div className="flex items-center gap-1.5">
-                      <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center text-black text-[6px] font-bold shrink-0">{deal.logo}</div>
+                      <img src={deal.logo} alt={deal.brand} className="w-4 h-4 rounded-full object-contain bg-white shrink-0" />
                       <p className="text-white text-sm font-semibold">{deal.brand}</p>
                     </div>
                     <p className="text-[#666] text-xs">{deal.detail}</p>
