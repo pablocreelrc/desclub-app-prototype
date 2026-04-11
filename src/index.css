@@ -48,7 +48,10 @@ html, body, #root {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
-  background: var(--app-bg, #fff);
+  background: var(--theme-bg, #000);
+  --theme-primary: #2196F3;
+  --theme-accent: #FF8C00;
+  --theme-bg: #000000;
 }
 
 @media (min-width: 768px) {

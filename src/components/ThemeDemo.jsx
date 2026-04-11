@@ -1,14 +1,10 @@
 import { useState } from 'react'
-
-const THEMES = [
-  { key: 'desclub', name: 'DescluB', color: '#2196F3', accent: '#FF8C00', bg: '#000', logo: 'DC', tagline: 'Miles de descuentos' },
-  { key: 'disney', name: 'Disney+ Perks', color: '#6C3CE1', accent: '#FFD700', bg: '#0C0A1A', logo: 'D+', tagline: 'Beneficios mágicos' },
-  { key: 'scotia', name: 'Scotiabank', color: '#EC111A', accent: '#FFFFFF', bg: '#1A0000', logo: 'SB', tagline: 'Más beneficios para ti' },
-  { key: 'tamex', name: 'TAMEX Rewards', color: '#00875A', accent: '#FFB800', bg: '#001A0F', logo: 'TX', tagline: 'Puntos que valen' },
-]
+import { THEMES } from '../data/themes'
+import { useTheme } from '../context/ThemeContext'
 
 export default function ThemeDemo({ onClose }) {
   const [active, setActive] = useState('desclub')
+  const { setActiveTheme } = useTheme()
   const theme = THEMES.find(t => t.key === active)
 
   return (
@@ -30,7 +26,7 @@ export default function ThemeDemo({ onClose }) {
           {THEMES.map(t => (
             <button
               key={t.key}
-              onClick={() => setActive(t.key)}
+              onClick={() => { setActive(t.key); setActiveTheme(t.key) }}
               className={`shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold transition-all ${
                 active === t.key ? 'text-white' : 'bg-white/5 text-white/40 border border-white/10'
               }`}
