@@ -4,24 +4,24 @@ import { useApp } from '../../context/AppContext'
 import WhatsAppButton from '../../components/WhatsAppButton'
 
 const FAQS = [
-  { q: 'Que es DescluB?', a: 'DescluB es la red de descuentos mas grande de Mexico con mas de 6,000 establecimientos y 500 marcas afiliadas.' },
-  { q: 'Cuanto cuesta la membresia?', a: 'Tu membresia es un beneficio proporcionado por tu empresa o programa de lealtad. No tiene costo adicional para ti.' },
+  { q: 'Que es DescluB?', a: 'DescluB es la red de descuentos mas grande de México con mas de 6,000 establecimientos y 500 marcas afiliadas.' },
+  { q: 'Cuanto cuesta la membresía?', a: 'Tu membresía es un beneficio proporcionado por tu empresa o programa de lealtad. No tiene costo adicional para ti.' },
   { q: 'Que beneficios recibo?', a: 'Acceso a descuentos exclusivos en restaurantes, entretenimiento, retail, viajes, wellness y mas.' },
-  { q: 'Como canjeo un descuento?', a: 'Selecciona el descuento, presiona "Canjear descuento" y muestra el codigo QR en el establecimiento.' },
-  { q: 'Por que no veo un beneficio?', a: 'Algunos beneficios son exclusivos por zona, categoria de membresia o empresa. Contacta soporte via WhatsApp.' },
-  { q: 'Un beneficio ya no esta disponible. Que paso?', a: 'Las promociones estan sujetas a disponibilidad y pueden cambiar sin previo aviso. Revisa la seccion de Beneficios para ver ofertas actualizadas.' },
-  { q: 'Como contacto soporte?', a: 'Usa el boton de WhatsApp abajo para chatear con nuestro equipo de soporte 24/7.' },
+  { q: 'Cómo canjeo un descuento?', a: 'Selecciona el descuento, presiona "Canjear descuento" y muestra el código QR en el establecimiento.' },
+  { q: 'Por que no veo un beneficio?', a: 'Algunos beneficios son exclusivos por zona, categoría de membresía o empresa. Contacta soporte via WhatsApp.' },
+  { q: 'Un beneficio ya no esta disponible. Que paso?', a: 'Las promociónes estan sujetas a disponibilidad y pueden cambiar sin previo aviso. Revisa la sección de Beneficios para ver ofertas actualizadas.' },
+  { q: 'Cómo contacto soporte?', a: 'Usa el boton de WhatsApp abajo para chatear con nuestro equipo de soporte 24/7.' },
 ]
 
 const HISTORY = [
-  { brand: 'Cinepolis', date: 'Hoy, 3:45 PM', saved: '$89' },
+  { brand: 'Cinépolis', date: 'Hoy, 3:45 PM', saved: '$89' },
   { brand: 'Starbucks', date: 'Ayer, 9:20 AM', saved: '$42' },
   { brand: 'Liverpool', date: '3 abr, 2:10 PM', saved: '$580' },
   { brand: 'Tim Hortons', date: '1 abr, 11:00 AM', saved: '$65' },
   { brand: 'Sport City', date: '28 mar', saved: '$350' },
 ]
 
-const TERMS_TEXT = 'Al utilizar la aplicacion DescluB, aceptas los presentes terminos y condiciones. DescluB es operado por Loyalty Solutions SA de CV. Los descuentos y promociones estan sujetos a disponibilidad y pueden cambiar sin previo aviso. La membresia es personal e intransferible. Los puntos acumulados tienen una vigencia de 12 meses a partir de su generacion. Loyalty Solutions se reserva el derecho de modificar, suspender o cancelar el programa en cualquier momento. Para consultas o aclaraciones, contacta a nuestro equipo de soporte via WhatsApp.'
+const TERMS_TEXT = 'Al utilizar la aplicacion DescluB, aceptas los presentes términos y condiciones. DescluB es operado por Loyalty Solutions SA de CV. Los descuentos y promociónes estan sujetos a disponibilidad y pueden cambiar sin previo aviso. La membresía es personal e intransferible. Los puntos acumulados tienen una vigencia de 12 meses a partir de su generacion. Loyalty Solutions se reserva el derecho de modificar, suspender o cancelar el programa en cualquier momento. Para consultas o aclaraciones, contacta a nuestro equipo de soporte via WhatsApp.'
 
 function Toggle({ enabled, onChange }) {
   return (
@@ -95,7 +95,7 @@ export default function ProfileSheet({ onClose, onLogout }) {
     setOpenFaq(null)
   }
 
-  const favoriteBrands = ['Cinepolis', 'Starbucks', 'Liverpool', 'Tim Hortons', 'Sport City']
+  const favoriteBrands = ['Cinépolis', 'Starbucks', 'Liverpool', 'Tim Hortons', 'Sport City']
 
   return (
     <div className="absolute inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-end" onClick={onClose}>
@@ -144,7 +144,7 @@ export default function ProfileSheet({ onClose, onLogout }) {
               {[
                 { key: 'name', label: 'Nombre', type: 'text' },
                 { key: 'email', label: 'Email', type: 'email' },
-                { key: 'phone', label: 'Telefono', type: 'tel' },
+                { key: 'phone', label: 'Teléfono', type: 'tel' },
               ].map((field) => (
                 <div key={field.key}>
                   <label className="text-[#666] text-[10px] uppercase tracking-wider">{field.label}</label>
@@ -160,13 +160,13 @@ export default function ProfileSheet({ onClose, onLogout }) {
             </div>
           )}
 
-          <Row label="Contrasena" onClick={() => toggle('password')} />
+          <Row label="Contraseña" onClick={() => toggle('password')} />
           {activeSection === 'password' && (
             <div className="py-3 space-y-3 border-b border-[#1a1a1a]">
               {[
-                { key: 'current', label: 'Contrasena actual', placeholder: 'Ingresa tu contrasena actual' },
-                { key: 'newPass', label: 'Nueva contrasena', placeholder: 'Minimo 8 caracteres' },
-                { key: 'confirm', label: 'Confirmar contrasena', placeholder: 'Repite la nueva contrasena' },
+                { key: 'current', label: 'Contraseña actual', placeholder: 'Ingresa tu contraseña actual' },
+                { key: 'newPass', label: 'Nueva contraseña', placeholder: 'Minimo 8 caracteres' },
+                { key: 'confirm', label: 'Confirmar contraseña', placeholder: 'Repite la nueva contraseña' },
               ].map((field) => (
                 <div key={field.key}>
                   <label className="text-[#666] text-[10px] uppercase tracking-wider">{field.label}</label>
@@ -216,7 +216,7 @@ export default function ProfileSheet({ onClose, onLogout }) {
           {/* ── Notifications ── */}
           <SectionHeader>Notificaciones</SectionHeader>
           <Row label="Push notifications" toggle={notifications} onToggle={setNotifications} />
-          <Row label="Alertas por ubicacion" toggle={locationAlerts} onToggle={setLocationAlerts} />
+          <Row label="Alertas por ubicación" toggle={locationAlerts} onToggle={setLocationAlerts} />
 
           {/* ── Communications ── */}
           <SectionHeader>Comunicaciones</SectionHeader>
@@ -255,7 +255,7 @@ export default function ProfileSheet({ onClose, onLogout }) {
             </div>
           )}
 
-          <Row label="Terminos y condiciones" onClick={() => toggle('terms')} />
+          <Row label="Términos y condiciones" onClick={() => toggle('terms')} />
           {activeSection === 'terms' && (
             <div className="py-3 border-b border-[#1a1a1a]">
               <p className="text-[#888] text-xs leading-relaxed">{TERMS_TEXT}</p>
@@ -263,7 +263,7 @@ export default function ProfileSheet({ onClose, onLogout }) {
           )}
 
           {/* ── More ── */}
-          <SectionHeader>Mas</SectionHeader>
+          <SectionHeader>Más</SectionHeader>
 
           <Row label="Compartir DescluB" onClick={() => {
             if (navigator.share) {
@@ -274,7 +274,7 @@ export default function ProfileSheet({ onClose, onLogout }) {
           <Row label="Calificar la app" onClick={() => toggle('rating')} />
           {activeSection === 'rating' && (
             <div className="py-4 border-b border-[#1a1a1a] text-center">
-              <p className="text-[#888] text-xs mb-3">Como calificarias tu experiencia?</p>
+              <p className="text-[#888] text-xs mb-3">Cómo calificarias tu experiencia?</p>
               <div className="flex justify-center gap-4">
                 {ratingFaces.map((face, i) => (
                   <button key={i} onClick={() => setRating(i)} className={`text-2xl transition-transform ${rating === i ? 'scale-125' : 'opacity-50'}`}>
@@ -292,7 +292,7 @@ export default function ProfileSheet({ onClose, onLogout }) {
 
           {/* Logout */}
           <button onClick={onLogout} className="w-full mt-6 py-4 text-red-400 text-base font-semibold text-center border-t border-[#1a1a1a] active:bg-[#0a0a0a]">
-            Cerrar sesion
+            Cerrar sesión
           </button>
 
           <p className="text-center text-[#333] text-[10px] mt-3 mb-4">&copy; 2026 Loyalty Solutions SA de CV</p>

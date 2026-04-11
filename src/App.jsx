@@ -140,7 +140,7 @@ function AppInner() {
           {showQRCard && (
             <div className="absolute inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowQRCard(false)}>
               <div className="bg-[#111] rounded-3xl p-6 mx-6 text-center border border-[#2a2a3a]" onClick={e => e.stopPropagation()}>
-                <h2 className="text-lg font-bold text-white mb-1">Tu Membresia DescluB</h2>
+                <h2 className="text-lg font-bold text-white mb-1">Tu Membresía DescluB</h2>
                 <p className="text-sm text-[#888] mb-4">Presenta este QR en el comercio</p>
                 <div className="w-44 h-44 mx-auto bg-white rounded-2xl flex items-center justify-center mb-3">
                   <div className="grid grid-cols-7 gap-[2px] p-3">
@@ -157,7 +157,7 @@ function AppInner() {
           )}
 
           {/* Tab bar */}
-          <TabBar active={tab} onChange={setTab} onDCPress={() => setShowQRCard(true)} />
+          <TabBar active={tab} onChange={(t) => { setTab(t); if (t === 'deals') setDealsCategoryFilter(null); }} onDCPress={() => setShowQRCard(true)} />
         </div>
       </IPhoneFrame>
 

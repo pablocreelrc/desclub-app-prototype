@@ -21,7 +21,7 @@ export default function WalletScreen() {
                   <span className="text-blue-400 text-[10px] font-bold bg-blue-500/15 px-2.5 py-0.5 rounded-full">GOLD</span>
                 </div>
                 <div>
-                  <p className="text-[#556] text-[10px] mb-1">NUMERO DE MEMBRESIA</p>
+                  <p className="text-[#556] text-[10px] mb-1">NÚMERO DE MEMBRESIA</p>
                   <p className="text-white text-lg font-mono tracking-[3px]">{USER.memberNumber}</p>
                 </div>
                 <div className="flex justify-between">
@@ -92,13 +92,13 @@ export default function WalletScreen() {
       </div>
 
       {/* Recent activity */}
-      <h3 className="text-white text-sm font-bold mb-2">Ultimos canjes</h3>
+      <h3 className="text-white text-sm font-bold mb-2">Últimos canjes</h3>
       {[
-        { brand: 'Cinepolis', date: 'Hoy, 3:45 PM', discount: '2x1', saved: '$89' },
+        { brand: 'Cinépolis', date: 'Hoy, 3:45 PM', discount: '2x1', saved: '$89' },
         { brand: 'Starbucks', date: 'Ayer, 9:20 AM', discount: '15% OFF', saved: '$42' },
         { brand: 'Liverpool', date: '3 abr, 2:10 PM', discount: '20% OFF', saved: '$580' },
         { brand: 'Tim Hortons', date: '1 abr, 11:00 AM', discount: '2x1', saved: '$65' },
-        { brand: 'Sport City', date: '28 mar', discount: '3 dias GRATIS', saved: '$350' },
+        { brand: 'Sport City', date: '28 mar', discount: '3 días GRATIS', saved: '$350' },
       ].map((item, i) => (
         <div key={i} className="flex items-center gap-3 py-2.5 border-b border-[#1a1a25] last:border-0">
           <div className="w-9 h-9 bg-blue-500/15 rounded-lg flex items-center justify-center">

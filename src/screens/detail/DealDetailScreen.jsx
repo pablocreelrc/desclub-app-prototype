@@ -84,7 +84,7 @@ export default function DealDetailScreen() {
 
         {/* How to redeem */}
         <div className="bg-blue-500/10 rounded-2xl p-4 mt-6 border border-blue-500/20">
-          <h3 className="font-semibold text-sm text-blue-400 mb-2">Como canjear</h3>
+          <h3 className="font-semibold text-sm text-blue-400 mb-2">Cómo canjear</h3>
           <div className="flex gap-3">
             {['Muestra tu QR', 'El comercio lo escanea', 'Gana puntos extras'].map((step, i) => (
               <div key={i} className="flex-1 text-center">
@@ -99,7 +99,7 @@ export default function DealDetailScreen() {
 
         {/* Terms */}
         <div className="bg-[#111] rounded-2xl p-4 mt-4 border border-[#2a2a3a]">
-          <h3 className="font-semibold text-sm text-white mb-2">Terminos y condiciones</h3>
+          <h3 className="font-semibold text-sm text-white mb-2">Términos y condiciones</h3>
           <ul className="space-y-1.5">
             {deal.terms.map((t, i) => (
               <li key={i} className="text-[13px] text-[#888] flex items-start gap-2">
@@ -113,7 +113,7 @@ export default function DealDetailScreen() {
         {/* Similar deals */}
         {similarDeals.length > 0 && (
           <>
-            <h3 className="text-white text-lg font-bold mt-8 mb-3">Tambien te puede interesar</h3>
+            <h3 className="text-white text-lg font-bold mt-8 mb-3">También te puede interesar</h3>
             {similarDeals.map((d) => (
               <button key={d.id} onClick={() => navigate('detail', d)} className="w-full flex items-center gap-3 bg-[#111] border border-[#1a1a1a] rounded-xl p-3 mb-2 active:bg-[#1a1a1a]">
                 <img src={d.image} alt={d.brand} className="w-14 h-14 rounded-lg object-cover" loading="lazy" />

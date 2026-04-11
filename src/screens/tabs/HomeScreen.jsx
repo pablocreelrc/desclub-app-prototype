@@ -39,20 +39,8 @@ export default function HomeScreen({ onCategorySelect }) {
           <SearchBar deals={DEALS} onDealClick={(deal) => navigate('detail', deal)} variant="dark" />
         </div>
 
-        {/* Welcome section */}
-        <div className="flex items-center gap-3 mb-5">
-          <div className="w-12 h-12 rounded-xl bg-[#111] border border-[#1a1a1a] flex items-center justify-center text-white text-sm font-bold">{USER.initials}</div>
-          <div>
-            <p className="text-white text-base font-bold">Bienvenido, {USER.name.split(' ')[0]}</p>
-            <div className="flex items-center gap-2">
-              <span className="text-blue-400 text-xs font-semibold">{USER.tier}</span>
-              <span className="text-[#555] text-xs">&bull; Miembro desde {USER.memberSince}</span>
-            </div>
-          </div>
-        </div>
-
         {/* Category grid */}
-        <h3 className="text-white text-lg font-bold mb-1">Explora por categoria</h3>
+        <h3 className="text-white text-lg font-bold mb-1">Explora por categoría</h3>
         <div className="w-12 h-0.5 bg-blue-500 mb-3" />
         <div className="grid grid-cols-3 gap-2 mb-6">
           {categories.map((c) => (

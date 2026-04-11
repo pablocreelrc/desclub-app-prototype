@@ -7,7 +7,7 @@ const TRANSFER_PARTNERS = [
   { name: 'Volaris V.Club', ratio: '1:1', icon: 'M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z' },
   { name: 'Club Premier', ratio: '1:1', icon: 'M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z' },
   { name: 'Hilton Honors', ratio: '1:1', icon: 'M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l6 3v5.64l-6 3-6-3V7.18l6-3z' },
-  { name: 'Cinepolis Club', ratio: '1:2', icon: 'M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z' },
+  { name: 'Cinépolis Club', ratio: '1:2', icon: 'M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z' },
 ]
 
 export default function RewardsScreen() {
@@ -47,7 +47,7 @@ export default function RewardsScreen() {
               <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
               <span className="text-white text-sm font-semibold">Pagar con puntos</span>
             </div>
-            <span className="text-[#888] text-xs bg-[#1a1a1a] px-2 py-0.5 rounded">Gana 1,000 pts minimo</span>
+            <span className="text-[#888] text-xs bg-[#1a1a1a] px-2 py-0.5 rounded">Gana 1,000 pts mínimo</span>
           </button>
         </div>
       </div>
