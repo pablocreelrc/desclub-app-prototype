@@ -14,7 +14,7 @@ export default function IPhoneFrame({ children, version = 'a' }) {
   return (
     /* Full-height on mobile, centered showcase on desktop */
     <div className={`iphone-showcase h-full md:h-auto md:min-h-screen md:flex md:items-center md:justify-center md:py-20 md:bg-gradient-to-br ${bgClass}`}>
-      <div className="h-full md:h-auto flex flex-col items-center md:gap-5">
+      <div className="h-full md:h-auto flex flex-col items-stretch md:items-center md:gap-5">
         {/* Bezel wrapper — transparent on mobile, visible on desktop */}
         <div className="iphone-bezel relative h-full md:h-auto md:bg-[#1a1a1a] md:rounded-[55px] md:p-[11px] md:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_30px_80px_-15px_rgba(0,0,0,0.5),0_0_50px_-8px_rgba(0,0,0,0.2)]">
           {/* Side buttons — desktop only */}
